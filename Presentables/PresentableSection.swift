@@ -11,46 +11,67 @@ import Foundation
 
 public class PresentableSection {
     
-    var header: PresentableHeader?
-    var footer: PresentableFooter?
+    var bindableHeader: Dynamic<PresenterHeader?> = Dynamic(nil)
+    var bindableFooter: Dynamic<PresenterFooter?> = Dynamic(nil)
+    var bindablePresenters: Dynamic<[Presenter]?> = Dynamic(nil)
     
-    var cells: [Presentable] = []
+    public var header: PresenterHeader? {
+        get {
+            return bindableHeader.value
+        }
+        set {
+            bindableHeader.value = newValue
+        }
+    }
+    
+    public var footer: PresenterFooter? {
+        get {
+            return bindableFooter.value
+        }
+        set {
+            bindableFooter.value = newValue
+        }
+    }
+    
+    public var presenters: [Presenter] {
+        get {
+            return bindablePresenters.value ?? []
+        }
+        set {
+            bindablePresenters.value = newValue
+        }
+    }
     
 }
 
-public extension Array where Element: Presentable {
+public extension Array where Element == Presenter {
     
-    var section: PresentableSection {
+    public var section: PresentableSection {
         get {
             let section = PresentableSection()
-            section.cells = self
+            section.presenters = self
             return section
         }
     }
     
 }
 
-class Dynamic<T> {
+public extension Array where Element == PresentableSection {
     
-    typealias Listener = (T) -> Void
-    var listener: Listener?
-    
-    func bind(listener: Listener?) {
-        self.listener = listener
+    func presenter(forIndexPath indexPath: IndexPath) -> Presenter {
+        return self[indexPath.section].presenters[indexPath.row]
+    }
+
+    func section(forIndexPath indexPath: IndexPath) -> PresentableSection {
+        return self[indexPath.section]
     }
     
-    func bindAndFire(listener: Listener?) {
-        self.listener = listener
-        listener?(value)
+    func header(forIndexPath indexPath: IndexPath) -> PresenterHeader? {
+        return self[indexPath.section].header
     }
     
-    var value: T {
-        didSet {
-            listener?(value)
-        }
+    func footer(forIndexPath indexPath: IndexPath) -> PresenterFooter? {
+        return self[indexPath.section].footer
     }
     
-    init(_ v: T) {
-        value = v
-    }
 }

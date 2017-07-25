@@ -12,7 +12,7 @@ import UIKit
 
 public protocol Bindable {
     
-    func register(presentableSections sections: [PresentableSection])
+    func register(presentableSections sections: inout [PresentableSection])
     
 }
 

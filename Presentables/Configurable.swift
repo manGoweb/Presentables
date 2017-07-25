@@ -12,6 +12,6 @@ import UIKit
 
 public protocol Configurable {
     
-    var configure: (()->())? { get set }
+    var configure: ((Presentable)->())? { get set }
     
 }
