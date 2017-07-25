@@ -21,15 +21,41 @@ fileprivate extension Array where Element == UITableViewCell.Type {
 extension UITableView: Bindable {
     
     public func register(presentableSections sections: inout [PresentableSection]) {
-        for section: PresentableSection in sections {
+        for  i in 0 ... (sections.count - 1) {
+            let section: PresentableSection = sections[i]
             section.bindableHeader.bind(listener: { (header) in
-                self.reloadData()
+                switch section.headerAnimation {
+                case .basic:
+                    self.beginUpdates()
+                    self.endUpdates()
+                    break
+                default:
+                    self.reloadData()
+                    break
+                }
             })
             section.bindableFooter.bind(listener: { (footer) in
-                self.reloadData()
+                switch section.footerAnimation {
+                case .basic:
+                    self.beginUpdates()
+                    self.endUpdates()
+                    break
+                default:
+                    self.reloadData()
+                    break
+                }
             })
             section.bindablePresenters.bind(listener: { (presenters) in
-                self.reloadData()
+                switch section.presenterAnimation {
+                case .basic:
+                    self.beginUpdates()
+                    self.insertRows(at: [IndexPath(row: section.presenters.count, section: i)], with: .fade)
+                    self.endUpdates()
+                    break
+                default:
+                    self.reloadData()
+                    break
+                }
             })
         }
         

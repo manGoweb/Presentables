@@ -21,6 +21,8 @@ extension Presenter {
 }
 
 
-public protocol PresenterHeader: Presenter { }
+public protocol PresenterHeaderFooter: Presenter { }
 
-public protocol PresenterFooter: Presenter { }
+public protocol PresenterHeader: PresenterHeaderFooter { }
+
+public protocol PresenterFooter: PresenterHeaderFooter { }

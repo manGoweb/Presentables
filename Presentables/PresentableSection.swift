@@ -9,12 +9,19 @@
 import Foundation
 
 
+public enum PresentableAnimation {
+    case none
+    case basic
+}
+
+
 public class PresentableSection {
     
     var bindableHeader: Dynamic<PresenterHeader?> = Dynamic(nil)
     var bindableFooter: Dynamic<PresenterFooter?> = Dynamic(nil)
     var bindablePresenters: Dynamic<[Presenter]?> = Dynamic(nil)
     
+    public var headerAnimation: PresentableAnimation = .none
     public var header: PresenterHeader? {
         get {
             return bindableHeader.value
@@ -24,6 +31,7 @@ public class PresentableSection {
         }
     }
     
+    public var footerAnimation: PresentableAnimation = .none
     public var footer: PresenterFooter? {
         get {
             return bindableFooter.value
@@ -33,6 +41,7 @@ public class PresentableSection {
         }
     }
     
+    public var presenterAnimation: PresentableAnimation = .none
     public var presenters: [Presenter] {
         get {
             return bindablePresenters.value ?? []
@@ -40,6 +49,12 @@ public class PresentableSection {
         set {
             bindablePresenters.value = newValue
         }
+    }
+    
+    // MARK: Initialization
+    
+    public init() {
+        
     }
     
 }
@@ -67,11 +82,19 @@ public extension Array where Element == PresentableSection {
     }
     
     func header(forIndexPath indexPath: IndexPath) -> PresenterHeader? {
-        return self[indexPath.section].header
+        return header(forSection: indexPath.section)
     }
     
     func footer(forIndexPath indexPath: IndexPath) -> PresenterFooter? {
-        return self[indexPath.section].footer
+        return footer(forSection: indexPath.section)
+    }
+    
+    func header(forSection section: Int) -> PresenterHeader? {
+        return self[section].header
+    }
+    
+    func footer(forSection section: Int) -> PresenterFooter? {
+        return self[section].footer
     }
     
 }
