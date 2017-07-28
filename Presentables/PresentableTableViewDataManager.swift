@@ -9,13 +9,22 @@
 import Foundation
 
 
-open class PresentableTableViewDataManager: NSObject, UITableViewDataSource, UITableViewDelegate {
+open class PresentableTableViewDataManager: NSObject, PresentableManager, UITableViewDataSource, UITableViewDelegate {
     
-    open var didTapCell: ((Presenter)->())?
-    open var didTapAccessoryButton: ((Presenter)->())?
+    public typealias PresentableTableViewDataManagerActionInfo = (presenter: Presenter, indexPath: IndexPath, tableView: UITableView)
     
-    // TODO: Make the whole data bindable!
-    open var data: [PresentableSection] = []
+    open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
+    open var didTapAccessoryButton: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
+    
+    open var bindableData: PresentableDynamic<PresentableSections> = PresentableDynamic([])
+    open var data: PresentableSections {
+        get {
+            return bindableData.value
+        }
+        set {
+            bindableData.value = newValue
+        }
+    }
     
     // MARK: Data source
     
@@ -49,12 +58,12 @@ open class PresentableTableViewDataManager: NSObject, UITableViewDataSource, UIT
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let presenter: Presenter = data.presenter(forIndexPath: indexPath)
-        didTapCell?(presenter)
+        didTapCell?((presenter: presenter, indexPath: indexPath, tableView: tableView))
     }
     
     open func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let presenter: Presenter = data.presenter(forIndexPath: indexPath)
-        didTapAccessoryButton?(presenter)
+        didTapAccessoryButton?((presenter: presenter, indexPath: indexPath, tableView: tableView))
     }
     
 }

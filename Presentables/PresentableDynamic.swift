@@ -1,5 +1,5 @@
 //
-//  Dynamic.swift
+//  PresentableDynamic.swift
 //  Presentables
 //
 //  Created by Ondrej Rafaj on 24/07/2017.
@@ -9,28 +9,28 @@
 import Foundation
 
 
-class Dynamic<T> {
+open class PresentableDynamic<T> {
     
-    typealias Listener = (T) -> Void
+    public typealias Listener = (T) -> Void
     
     var listener: Listener?
     
-    func bind(listener: Listener?) {
+    open func bind(listener: Listener?) {
         self.listener = listener
     }
     
-    func bindAndFire(listener: Listener?) {
+    open func bindAndFire(listener: Listener?) {
         self.listener = listener
         listener?(value)
     }
     
-    var value: T {
+    open var value: T {
         didSet {
             listener?(value)
         }
     }
     
-    init(_ v: T) {
+    public init(_ v: T) {
         value = v
     }
     

@@ -18,20 +18,27 @@ fileprivate extension Array where Element == UICollectionViewCell.Type {
     
 }
 
-extension UICollectionView: Bindable {
-    
-    public func register(presentableSections sections: inout [PresentableSection]) {
-        for section: PresentableSection in sections {
-            section.bindableHeader.bind(listener: { (header) in
-                self.reloadData()
-            })
-            section.bindableFooter.bind(listener: { (footer) in
-                self.reloadData()
-            })
-            section.bindablePresenters.bind(listener: { (cells) in
-                self.reloadData()
-            })
-        }
-    }
-    
-}
+//extension UICollectionView: PresentableCollectionElement {
+//    
+//    public func register(manager: inout PresentableManager?) {
+////        manager.bindableData.bind(listener: { (data) in
+////            self.reloadData()
+////        })
+////        register(presentableSections: &manager.data)
+//    }
+//    
+//    private func register(presentableSections sections: inout [PresentableSection]) {
+//        for section: PresentableSection in sections {
+//            section.bindableHeader.bind(listener: { (header) in
+//                self.reloadData()
+//            })
+//            section.bindableFooter.bind(listener: { (footer) in
+//                self.reloadData()
+//            })
+//            section.bindablePresenters.bind(listener: { (cells) in
+//                self.reloadData()
+//            })
+//        }
+//    }
+//    
+//}

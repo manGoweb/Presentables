@@ -9,17 +9,26 @@
 import Foundation
 
 
+public typealias PresentableSections = [PresentableSection]
+
+
 public enum PresentableAnimation {
     case none
-    case basic
 }
 
+public protocol PresentableSectionMarker {
+    var header: PresenterHeader? { get set }
+    var footer: PresenterFooter? { get set }
+    var presenters: [Presenter] { get set }
+}
 
-public class PresentableSection {
+public typealias PresentableSectionMarkers = [PresentableSectionMarker]
+
+public class PresentableSection: PresentableSectionMarker {
     
-    var bindableHeader: Dynamic<PresenterHeader?> = Dynamic(nil)
-    var bindableFooter: Dynamic<PresenterFooter?> = Dynamic(nil)
-    var bindablePresenters: Dynamic<[Presenter]?> = Dynamic(nil)
+    var bindableHeader: PresentableDynamic<PresenterHeader?> = PresentableDynamic(nil)
+    var bindableFooter: PresentableDynamic<PresenterFooter?> = PresentableDynamic(nil)
+    var bindablePresenters: PresentableDynamic<[Presenter]?> = PresentableDynamic(nil)
     
     public var headerAnimation: PresentableAnimation = .none
     public var header: PresenterHeader? {
@@ -59,6 +68,8 @@ public class PresentableSection {
     
 }
 
+// MARK: - Section generators
+
 public extension Array where Element == Presenter {
     
     public var section: PresentableSection {
@@ -71,14 +82,18 @@ public extension Array where Element == Presenter {
     
 }
 
-public extension Array where Element == PresentableSection {
+// MARK: - Dynamic helpers for PresentableSections
+
+public extension Array where Element: PresentableSectionMarker {
     
     func presenter(forIndexPath indexPath: IndexPath) -> Presenter {
-        return self[indexPath.section].presenters[indexPath.row]
+        let sections: PresentableSections = sectionsOrError()
+        return sections[indexPath.section].presenters[indexPath.row]
     }
 
     func section(forIndexPath indexPath: IndexPath) -> PresentableSection {
-        return self[indexPath.section]
+        let sections: PresentableSections = sectionsOrError()
+        return sections[indexPath.section]
     }
     
     func header(forIndexPath indexPath: IndexPath) -> PresenterHeader? {
@@ -90,11 +105,22 @@ public extension Array where Element == PresentableSection {
     }
     
     func header(forSection section: Int) -> PresenterHeader? {
-        return self[section].header
+        let sections: PresentableSections = sectionsOrError()
+        return sections[section].header
     }
     
     func footer(forSection section: Int) -> PresenterFooter? {
-        return self[section].footer
+        let sections: PresentableSections = sectionsOrError()
+        return sections[section].footer
+    }
+    
+    // MARK: Private helpers
+    
+    private func sectionsOrError() -> PresentableSections {
+        guard let sections = self as? PresentableSections else {
+            fatalError("Object PresentableSection not present")
+        }
+        return sections
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15723D191F2B5F6C007234FB /* PresentableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15723D181F2B5F6C007234FB /* PresentableManager.swift */; };
 		159C3E051F269DE300D014BF /* Presentables.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159C3DFB1F269DE300D014BF /* Presentables.framework */; };
 		159C3E0A1F269DE300D014BF /* PresentablesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E091F269DE300D014BF /* PresentablesTests.swift */; };
 		159C3E0C1F269DE300D014BF /* Presentables.h in Headers */ = {isa = PBXBuildFile; fileRef = 159C3DFE1F269DE300D014BF /* Presentables.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,8 +18,8 @@
 		159C3E2A1F269E1E00D014BF /* Identifyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E221F269E1E00D014BF /* Identifyable.swift */; };
 		159C3E2B1F269E1E00D014BF /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E231F269E1E00D014BF /* Configurable.swift */; };
 		159C3E2C1F269E1E00D014BF /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E241F269E1E00D014BF /* Reusable.swift */; };
-		159C3E2D1F269E1E00D014BF /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E251F269E1E00D014BF /* Bindable.swift */; };
-		159C3E341F26A05800D014BF /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E331F26A05800D014BF /* Dynamic.swift */; };
+		159C3E2D1F269E1E00D014BF /* PresentableCollectionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E251F269E1E00D014BF /* PresentableCollectionElement.swift */; };
+		159C3E341F26A05800D014BF /* PresentableDynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E331F26A05800D014BF /* PresentableDynamic.swift */; };
 		159C3E361F26AA6300D014BF /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E351F26AA6300D014BF /* Presentable.swift */; };
 		159C3E391F26B0EF00D014BF /* UITableView+Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E371F26B0EF00D014BF /* UITableView+Cells.swift */; };
 		159C3E3A1F26B0EF00D014BF /* UICollectionView+Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C3E381F26B0EF00D014BF /* UICollectionView+Cells.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15723D181F2B5F6C007234FB /* PresentableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentableManager.swift; sourceTree = "<group>"; };
 		159C3DFB1F269DE300D014BF /* Presentables.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presentables.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		159C3DFE1F269DE300D014BF /* Presentables.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Presentables.h; sourceTree = "<group>"; };
 		159C3DFF1F269DE300D014BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,8 +51,8 @@
 		159C3E221F269E1E00D014BF /* Identifyable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifyable.swift; sourceTree = "<group>"; };
 		159C3E231F269E1E00D014BF /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		159C3E241F269E1E00D014BF /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
-		159C3E251F269E1E00D014BF /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
-		159C3E331F26A05800D014BF /* Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		159C3E251F269E1E00D014BF /* PresentableCollectionElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentableCollectionElement.swift; sourceTree = "<group>"; };
+		159C3E331F26A05800D014BF /* PresentableDynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentableDynamic.swift; sourceTree = "<group>"; };
 		159C3E351F26AA6300D014BF /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		159C3E371F26B0EF00D014BF /* UITableView+Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Cells.swift"; sourceTree = "<group>"; };
 		159C3E381F26B0EF00D014BF /* UICollectionView+Cells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Cells.swift"; sourceTree = "<group>"; };
@@ -133,7 +135,8 @@
 				159C3E221F269E1E00D014BF /* Identifyable.swift */,
 				159C3E231F269E1E00D014BF /* Configurable.swift */,
 				159C3E241F269E1E00D014BF /* Reusable.swift */,
-				159C3E251F269E1E00D014BF /* Bindable.swift */,
+				159C3E251F269E1E00D014BF /* PresentableCollectionElement.swift */,
+				15723D181F2B5F6C007234FB /* PresentableManager.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -152,7 +155,7 @@
 		159C3E3F1F27B82000D014BF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				159C3E331F26A05800D014BF /* Dynamic.swift */,
+				159C3E331F26A05800D014BF /* PresentableDynamic.swift */,
 				159C3E211F269E1E00D014BF /* PresentableSection.swift */,
 				159C3E3B1F27B80000D014BF /* PresentableTableViewDataManager.swift */,
 			);
@@ -279,11 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				159C3E2B1F269E1E00D014BF /* Configurable.swift in Sources */,
+				15723D191F2B5F6C007234FB /* PresentableManager.swift in Sources */,
 				159C3E281F269E1E00D014BF /* Presentable+UICollectionView.swift in Sources */,
 				159C3E3C1F27B80000D014BF /* PresentableTableViewDataManager.swift in Sources */,
-				159C3E2D1F269E1E00D014BF /* Bindable.swift in Sources */,
+				159C3E2D1F269E1E00D014BF /* PresentableCollectionElement.swift in Sources */,
 				159C3E361F26AA6300D014BF /* Presentable.swift in Sources */,
-				159C3E341F26A05800D014BF /* Dynamic.swift in Sources */,
+				159C3E341F26A05800D014BF /* PresentableDynamic.swift in Sources */,
 				159C3E291F269E1E00D014BF /* PresentableSection.swift in Sources */,
 				159C3E391F26B0EF00D014BF /* UITableView+Cells.swift in Sources */,
 				159C3E261F269E1E00D014BF /* Presenter.swift in Sources */,

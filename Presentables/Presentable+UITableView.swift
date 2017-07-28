@@ -18,44 +18,26 @@ fileprivate extension Array where Element == UITableViewCell.Type {
     
 }
 
-extension UITableView: Bindable {
+extension UITableView: PresentableCollectionElement {
     
-    public func register(presentableSections sections: inout [PresentableSection]) {
+    public func bind(withPresentableManager manager: inout PresentableManager) {
+        manager.bindableData.bind(listener: { (data) in
+            self.reloadData()
+        })
+        register(presentableSections: &manager.data)
+    }
+    
+    private func register(presentableSections sections: inout PresentableSections) {
         for  i in 0 ... (sections.count - 1) {
             let section: PresentableSection = sections[i]
             section.bindableHeader.bind(listener: { (header) in
-                switch section.headerAnimation {
-                case .basic:
-                    self.beginUpdates()
-                    self.endUpdates()
-                    break
-                default:
-                    self.reloadData()
-                    break
-                }
+                self.reloadData()
             })
             section.bindableFooter.bind(listener: { (footer) in
-                switch section.footerAnimation {
-                case .basic:
-                    self.beginUpdates()
-                    self.endUpdates()
-                    break
-                default:
-                    self.reloadData()
-                    break
-                }
+                self.reloadData()
             })
             section.bindablePresenters.bind(listener: { (presenters) in
-                switch section.presenterAnimation {
-                case .basic:
-                    self.beginUpdates()
-                    self.insertRows(at: [IndexPath(row: section.presenters.count, section: i)], with: .fade)
-                    self.endUpdates()
-                    break
-                default:
-                    self.reloadData()
-                    break
-                }
+                self.reloadData()
             })
         }
         
