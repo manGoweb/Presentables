@@ -14,4 +14,6 @@ public protocol PresentableManager {
     var bindableData: PresentableDynamic<PresentableSections> { get }
     var data: PresentableSections { get set }
     
+    var needsReloadData: (()->())? { get set }
+    
 }

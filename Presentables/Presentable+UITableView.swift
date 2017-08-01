@@ -25,6 +25,13 @@ extension UITableView: PresentableCollectionElement {
             self.reloadData()
         })
         register(presentableSections: &manager.data)
+        
+        manager.needsReloadData = {
+            self.reloadData()
+        }
+        
+        dataSource = manager as? UITableViewDataSource
+        delegate = manager as? UITableViewDelegate
     }
     
     private func register(presentableSections sections: inout PresentableSections) {

@@ -11,6 +11,8 @@ import Foundation
 
 open class PresentableTableViewDataManager: NSObject, PresentableManager, UITableViewDataSource, UITableViewDelegate {
     
+    public var needsReloadData: (()->())? = nil
+    
     public typealias PresentableTableViewDataManagerActionInfo = (presenter: Presenter, indexPath: IndexPath, tableView: UITableView)
     
     open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
