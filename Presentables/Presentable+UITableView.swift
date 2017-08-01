@@ -34,7 +34,7 @@ extension UITableView: PresentableCollectionElement {
         delegate = manager as? UITableViewDelegate
     }
     
-    private func register(presentableSections sections: inout PresentableSections) {
+    public func register(presentableSections sections: inout PresentableSections) {
         for  i in 0 ... (sections.count - 1) {
             let section: PresentableSection = sections[i]
             section.bindableHeader.bind(listener: { (header) in

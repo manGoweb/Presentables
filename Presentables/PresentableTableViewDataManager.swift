@@ -11,7 +11,7 @@ import Foundation
 
 open class PresentableTableViewDataManager: NSObject, PresentableManager, UITableViewDataSource, UITableViewDelegate {
     
-    public var needsReloadData: (()->())? = nil
+    public var needsReloadData: (()->())?
     
     public typealias PresentableTableViewDataManagerActionInfo = (presenter: Presenter, indexPath: IndexPath, tableView: UITableView)
     
@@ -27,6 +27,8 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
             bindableData.value = newValue
         }
     }
+    
+    public var tableView: UITableView?
     
     // MARK: Data source
     
