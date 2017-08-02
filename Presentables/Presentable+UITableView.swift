@@ -35,6 +35,10 @@ extension UITableView: PresentableCollectionElement {
     }
     
     public func register(presentableSections sections: inout PresentableSections) {
+        guard sections.count > 0 else {
+            return
+        }
+        
         for  i in 0 ... (sections.count - 1) {
             let section: PresentableSection = sections[i]
             section.bindableHeader.bind(listener: { (header) in

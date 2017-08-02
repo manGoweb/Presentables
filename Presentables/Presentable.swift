@@ -9,6 +9,6 @@
 import Foundation
 
 
-public protocol Presentable: Identifyable {
+public protocol Presentable: Identifiable {
     
 }

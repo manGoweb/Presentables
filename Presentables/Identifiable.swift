@@ -1,5 +1,5 @@
 //
-//  Identifyable.swift
+//  Identifiable.swift
 //  LUIElements
 //
 //  Created by Ondrej Rafaj on 24/07/2017.
@@ -9,9 +9,9 @@
 import Foundation
 
 
-public protocol Identifyable { }
+public protocol Identifiable { }
 
-extension Identifyable {
+extension Identifiable {
     
     public var identifier: String {
         let className: String = String(describing: self)
@@ -27,6 +27,6 @@ extension Identifyable {
     
 }
 
-extension UITableViewCell: Identifyable { }
-extension UITableViewHeaderFooterView: Identifyable { }
-extension UICollectionReusableView: Identifyable { }
+extension UITableViewCell: Identifiable { }
+extension UITableViewHeaderFooterView: Identifiable { }
+extension UICollectionReusableView: Identifiable { }
