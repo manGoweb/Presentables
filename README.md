@@ -1,5 +1,6 @@
 # Presentables
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
 [![License](https://img.shields.io/cocoapods/l/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
 [![Platform](https://img.shields.io/cocoapods/p/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
