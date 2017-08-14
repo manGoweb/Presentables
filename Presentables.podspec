@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Presentables'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Presentables.'
+  s.summary          = 'Simple reactive library written in Swift'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,16 +17,14 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description      = "Simplify the way you use table views and collection views in your app. This library is not supposed to be competing with RxSwift at all, this is only for developers who want a quick way to simplify their screens."
 
-  s.homepage         = 'https://github.com/Ondrej Rafaj/Presentables'
+  s.homepage         = 'https://github.com/manGoweb/Presentables'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Ondrej Rafaj' => 'dev@mangoweb.cz' }
-  s.source           = { :git => 'https://github.com/Ondrej Rafaj/Presentables.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/manGoweb/Presentables.git', :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/rafiki270'
 
   s.ios.deployment_target = '8.0'
 
