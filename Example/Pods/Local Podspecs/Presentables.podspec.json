@@ -1,0 +1,22 @@
+{
+  "name": "Presentables",
+  "version": "0.1.0",
+  "summary": "A short description of Presentables.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Ondrej Rafaj/Presentables",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ondrej Rafaj": "dev@mangoweb.cz"
+  },
+  "source": {
+    "git": "https://github.com/Ondrej Rafaj/Presentables.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Presentables/Classes/**/*"
+}
