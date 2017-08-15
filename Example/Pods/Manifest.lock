@@ -13,6 +13,7 @@ PODS:
     - Quick
   - Presentables (0.1.0)
   - Quick (1.0.0)
+  - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - Nimble-Snapshots
   - Presentables (from `../`)
   - Quick (~> 1.0.0)
+  - SnapKit (~> 3.2.0)
 
 EXTERNAL SOURCES:
   Presentables:
@@ -31,7 +33,8 @@ SPEC CHECKSUMS:
   Nimble-Snapshots: e743439f26c2fa99d8f7e0d7c01c99bcb40aa6f2
   Presentables: 5fa0ceb0d8b7e5f58f18fdd7c5ba6583baad1e78
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: ed38c74fd562da848bcfb55aa4362a0ee0c2027c
+PODFILE CHECKSUM: 59c4e5e92aff16c06f9ee23b7471ef2c0b337c75
 
 COCOAPODS: 1.3.1

@@ -21,7 +21,11 @@ fileprivate extension Array where Element == UITableViewCell.Type {
 extension UITableView: PresentableCollectionElement {
     
     public func bind(withPresentableManager manager: inout PresentableManager) {
+        let m = manager
         manager.bindableData.bind(listener: { (data) in
+            for section: PresentableSection in m.data {
+                self.register(section: section)
+            }
             self.reloadData()
         })
         register(presentableSections: &manager.data)
@@ -49,16 +53,61 @@ extension UITableView: PresentableCollectionElement {
     
     // MARK: Helpers
     
-    internal func register(section: PresentableSection) {
-        section.bindableHeader.bind(listener: { (header) in
-            self.reloadData()
-        })
-        section.bindableFooter.bind(listener: { (footer) in
-            self.reloadData()
-        })
-        section.bindablePresenters.bind(listener: { (presenters) in
-            self.reloadData()
-        })
+    func register(section: PresentableSection) {
+        if section.bindableHeader.listener == nil {
+            section.bindableHeader.bind(listener: { (header) in
+                self.reloadData()
+            })
+        }
+        if section.bindableFooter.listener == nil {
+            section.bindableFooter.bind(listener: { (footer) in
+                self.reloadData()
+            })
+        }
+        if section.bindablePresenters.listener == nil {
+            section.bindablePresenters.bind(listener: { (presenters) in
+                if section.presenterAnimation == .none {
+                    self.reloadData()
+                }
+                else {
+                    //self.insertAndDeleteCellsForObjects(objects: presenters, originalObjects: presenters)
+                }
+            })
+        }
     }
     
 }
+
+extension UITableView {
+    
+    func arrayInsertionDeletionAndNoopIndexes<T: Equatable>(objects: [T], originalObjects: [T]) -> ([Int], [Int], [Int]) {
+        let insertions = objects.filter({ !originalObjects.contains($0) }).map({ objects.index(of: $0)! })
+        let noops = originalObjects.filter({ objects.contains($0) }).map({ originalObjects.index(of: $0)! })
+        let deletions = originalObjects.filter({ !objects.contains($0) }).map({ originalObjects.index(of: $0)! })
+        
+        return (insertions, deletions, noops)
+    }
+    
+    func arrayInsertionDeletionAndNoopIndexPaths<T: Equatable>(objects: [T], originalObjects: [T], section: Int = 0) -> ([IndexPath], [IndexPath], [IndexPath]) {
+        let (insertions, deletions, noops) = arrayInsertionDeletionAndNoopIndexes(objects: objects, originalObjects: originalObjects)
+        
+        let insertionIndexPaths = insertions.map({ IndexPath(row: $0, section: section) })
+        let deletionIndexPaths = deletions.map({ IndexPath(row: $0, section: section) })
+        let noopIndexPaths = noops.map({ IndexPath(row: $0, section: section) })
+        
+        return (insertionIndexPaths, deletionIndexPaths, noopIndexPaths)
+    }
+    
+    func insertAndDeleteCellsForObjects<T: Equatable>(objects: [T], originalObjects: [T], section: Int = 0) {
+        let (insertions, deletions, _) = arrayInsertionDeletionAndNoopIndexPaths(objects: objects, originalObjects: originalObjects, section: section)
+        
+        if insertions.count > 0 || deletions.count > 0 {
+            beginUpdates()
+            insertRows(at: insertions, with: .automatic)
+            deleteRows(at: deletions, with: .automatic)
+            endUpdates()
+        }
+    }
+    
+}
+

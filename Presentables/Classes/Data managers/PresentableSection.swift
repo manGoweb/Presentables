@@ -26,9 +26,9 @@ public typealias PresentableSectionMarkers = [PresentableSectionMarker]
 
 public class PresentableSection: PresentableSectionMarker {
     
-    var bindableHeader: PresentableDynamic<PresenterHeader?> = PresentableDynamic(nil)
-    var bindableFooter: PresentableDynamic<PresenterFooter?> = PresentableDynamic(nil)
-    var bindablePresenters: PresentableDynamic<[Presenter]?> = PresentableDynamic(nil)
+    var bindableHeader: Observable<PresenterHeader?> = Observable(nil)
+    var bindableFooter: Observable<PresenterFooter?> = Observable(nil)
+    var bindablePresenters: Observable<[Presenter]?> = Observable(nil)
     
     public var headerAnimation: PresentableAnimation = .none
     public var header: PresenterHeader? {
@@ -78,14 +78,6 @@ public extension Array where Element == Presenter {
             section.presenters = self
             return section
         }
-    }
-    
-}
-
-extension Array where Element == PresentableSection {
-    
-    func append(_ newElement: Element) {
-        append(newElement)
     }
     
 }

@@ -11,7 +11,7 @@ import Foundation
 
 public protocol PresentableManager {
     
-    var bindableData: PresentableDynamic<PresentableSections> { get }
+    var bindableData: Observable<PresentableSections> { get }
     var data: PresentableSections { get set }
     
     var needsReloadData: (()->())? { get set }

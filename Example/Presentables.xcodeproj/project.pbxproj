@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		156D7AA21F422D5C0075ACE7 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AA11F422D5C0075ACE7 /* DataController.swift */; };
 		156D7AA51F422E570075ACE7 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AA41F422E570075ACE7 /* MyCell.swift */; };
+		156D7AFA1F431A150075ACE7 /* MyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AF91F431A150075ACE7 /* MyHeader.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		156D7AA11F422D5C0075ACE7 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		156D7AA41F422E570075ACE7 /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		156D7AF91F431A150075ACE7 /* MyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHeader.swift; sourceTree = "<group>"; };
 		38060251E15DAF9BBFE2B96E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		465FC11CBD92471A8BAF9E8C /* Pods-Presentables_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presentables_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Presentables_Tests/Pods-Presentables_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		5584779DA614D7D371B44CD9 /* Pods_Presentables_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Presentables_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				156D7AA41F422E570075ACE7 /* MyCell.swift */,
+				156D7AF91F431A150075ACE7 /* MyHeader.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -298,10 +301,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Presentables_Example/Pods-Presentables_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Presentables/Presentables.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentables.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -409,6 +414,7 @@
 				156D7AA51F422E570075ACE7 /* MyCell.swift in Sources */,
 				156D7AA21F422D5C0075ACE7 /* DataController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				156D7AFA1F431A150075ACE7 /* MyHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

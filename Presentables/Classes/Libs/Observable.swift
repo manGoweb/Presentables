@@ -1,5 +1,5 @@
 //
-//  PresentableDynamic.swift
+//  Observable.swift
 //  Presentables
 //
 //  Created by Ondrej Rafaj on 24/07/2017.
@@ -9,7 +9,7 @@
 import Foundation
 
 
-open class PresentableDynamic<T> {
+open class Observable<T> {
     
     public typealias Listener = (T) -> Void
     
