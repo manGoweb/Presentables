@@ -12,10 +12,32 @@ import Presentables
 
 class DataController: PresentableTableViewDataManager {
     
+    // MARK: Initialization
     
-    // MARK: Data
+    override init() {
+        super.init()
+        
+        loadBasicData()
+        
+        // Add new section every couple of seconds
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (timer) in
+            self.loadBasicData()
+        }
+    }
     
-    private func newPresenter(_ i: Int) -> MyCellPresenter {
+    // MARK: Overriding table view delegate
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+}
+
+// MARK: - Data
+
+extension DataController {
+    
+    fileprivate func newPresenter(_ i: Int) -> MyCellPresenter {
         let presenter = MyCellPresenter()
         presenter.configure = { presentable in
             guard let cell = presentable as? MyCell else {
@@ -26,7 +48,7 @@ class DataController: PresentableTableViewDataManager {
         return presenter
     }
     
-    private func newHeader(_ i: Int) -> MyHeaderPresenter {
+    fileprivate func newHeader(_ i: Int) -> MyHeaderPresenter {
         let header = MyHeaderPresenter()
         header.configure = { presentable in
             guard let header = presentable as? MyHeader else {
@@ -37,7 +59,7 @@ class DataController: PresentableTableViewDataManager {
         return header
     }
     
-    private func loadBasicData() {
+    fileprivate func loadBasicData() {
         let section = PresentableSection()
         
         section.header = newHeader((data.count + 1))
@@ -56,25 +78,6 @@ class DataController: PresentableTableViewDataManager {
         
         // Add section to the data set
         data.append(section)
-    }
-    
-    // MARK: Initialization
-    
-    override init() {
-        super.init()
-        
-        loadBasicData()
-        
-        // Add new section every couple of seconds
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (timer) in
-            self.loadBasicData()
-        }
-    }
-    
-    // MARK: Overriding table view delegate
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
     }
     
 }

@@ -16,13 +16,9 @@ public protocol Presenter: Configurable {
     
 }
 
-extension Presenter {
-    
-}
+extension Presenter { }
 
 
 public protocol PresenterHeaderFooter: Presenter { }
-
 public protocol PresenterHeader: PresenterHeaderFooter { }
-
 public protocol PresenterFooter: PresenterHeaderFooter { }
