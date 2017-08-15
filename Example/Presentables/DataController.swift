@@ -20,7 +20,7 @@ class DataController: PresentableTableViewDataManager {
         loadBasicData()
         
         // Add new section every couple of seconds
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { (timer) in
             self.loadBasicData()
         }
     }
@@ -64,14 +64,8 @@ extension DataController {
         
         section.header = newHeader((data.count + 1))
         
-        // Create some basic cells
-        for i: Int in 1...3 {
-            let presenter = newPresenter(i)
-            section.presenters.append(presenter)
-        }
-        
         // Add new cell every couple of seconds
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
             let presenter = self.newPresenter((section.presenters.count + 1))
             section.presenters.append(presenter)
         }

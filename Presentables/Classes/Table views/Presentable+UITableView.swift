@@ -20,25 +20,32 @@ fileprivate extension Array where Element == UITableViewCell.Type {
 
 extension UITableView: PresentableCollectionElement {
     
+    func safeReloadData() {
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
+    }
+    
     public func bind(withPresentableManager manager: inout PresentableManager) {
         let m = manager
         manager.bindableData.bind(listener: { (data) in
             for section: PresentableSection in m.data {
                 self.register(section: section)
             }
-            self.reloadData()
+            self.safeReloadData()
         })
+        
         register(presentableSections: &manager.data)
         
         manager.needsReloadData = {
-            self.reloadData()
+            self.safeReloadData()
         }
         
         dataSource = manager as? UITableViewDataSource
         delegate = manager as? UITableViewDelegate
     }
     
-    public func register(presentableSections sections: inout PresentableSections) {
+    func register(presentableSections sections: inout PresentableSections) {
         guard sections.count > 0 else {
             return
         }
@@ -48,26 +55,28 @@ extension UITableView: PresentableCollectionElement {
             register(section: section)
         }
         
-        reloadData()
+        safeReloadData()
     }
     
     // MARK: Helpers
     
     func register(section: PresentableSection) {
-        if section.bindableHeader.listener == nil {
-            section.bindableHeader.bind(listener: { (header) in
-                self.reloadData()
-            })
-        }
-        if section.bindableFooter.listener == nil {
-            section.bindableFooter.bind(listener: { (footer) in
-                self.reloadData()
-            })
-        }
-        if section.bindablePresenters.listener == nil {
-            section.bindablePresenters.bind(listener: { (presenters) in
-                self.reloadData()
-            })
+        DispatchQueue.global().async {
+            if section.bindableHeader.listener == nil {
+                section.bindableHeader.bind(listener: { (header) in
+                    self.safeReloadData()
+                })
+            }
+            if section.bindableFooter.listener == nil {
+                section.bindableFooter.bind(listener: { (footer) in
+                    self.safeReloadData()
+                })
+            }
+            if section.bindablePresenters.listener == nil {
+                section.bindablePresenters.bind(listener: { (presenters) in
+                    self.safeReloadData()
+                })
+            }
         }
     }
     
