@@ -1,9 +1,9 @@
 {
   "name": "Presentables",
   "version": "0.1.0",
-  "summary": "A short description of Presentables.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Ondrej Rafaj/Presentables",
+  "summary": "Simple reactive library written in Swift",
+  "description": "Simplify the way you use table views and collection views in your app. This library is not supposed to be competing with RxSwift at all, this is only for developers who want a quick way to simplify their screens.",
+  "homepage": "https://github.com/manGoweb/Presentables",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,9 +12,10 @@
     "Ondrej Rafaj": "dev@mangoweb.cz"
   },
   "source": {
-    "git": "https://github.com/Ondrej Rafaj/Presentables.git",
+    "git": "https://github.com/manGoweb/Presentables.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/rafiki270",
   "platforms": {
     "ios": "8.0"
   },

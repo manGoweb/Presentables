@@ -13,6 +13,5 @@ import UIKit
 public protocol PresentableCollectionElement {
     
     func bind(withPresentableManager manager: inout PresentableManager)
-    //func register(presentableSections sections: inout [PresentableSection])
     
 }

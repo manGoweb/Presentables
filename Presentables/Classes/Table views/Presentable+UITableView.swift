@@ -41,18 +41,24 @@ extension UITableView: PresentableCollectionElement {
         
         for  i in 0 ... (sections.count - 1) {
             let section: PresentableSection = sections[i]
-            section.bindableHeader.bind(listener: { (header) in
-                self.reloadData()
-            })
-            section.bindableFooter.bind(listener: { (footer) in
-                self.reloadData()
-            })
-            section.bindablePresenters.bind(listener: { (presenters) in
-                self.reloadData()
-            })
+            register(section: section)
         }
         
         reloadData()
+    }
+    
+    // MARK: Helpers
+    
+    internal func register(section: PresentableSection) {
+        section.bindableHeader.bind(listener: { (header) in
+            self.reloadData()
+        })
+        section.bindableFooter.bind(listener: { (footer) in
+            self.reloadData()
+        })
+        section.bindablePresenters.bind(listener: { (presenters) in
+            self.reloadData()
+        })
     }
     
 }

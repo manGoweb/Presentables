@@ -82,6 +82,14 @@ public extension Array where Element == Presenter {
     
 }
 
+extension Array where Element == PresentableSection {
+    
+    func append(_ newElement: Element) {
+        append(newElement)
+    }
+    
+}
+
 // MARK: - Dynamic helpers for PresentableSections
 
 public extension Array where Element: PresentableSectionMarker {

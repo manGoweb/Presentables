@@ -18,8 +18,8 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
     open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
     open var didTapAccessoryButton: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
     
-    open var bindableData: PresentableDynamic<PresentableSections> = PresentableDynamic([])
-    open var data: PresentableSections {
+    public var bindableData: PresentableDynamic<PresentableSections> = PresentableDynamic([])
+    public var data: PresentableSections {
         get {
             return bindableData.value
         }

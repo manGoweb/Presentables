@@ -29,7 +29,7 @@ SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Nimble-Snapshots: e743439f26c2fa99d8f7e0d7c01c99bcb40aa6f2
-  Presentables: c57d21bbfc94e78e0e556edd3dfab08fde1ddb58
+  Presentables: 5fa0ceb0d8b7e5f58f18fdd7c5ba6583baad1e78
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
 
 PODFILE CHECKSUM: ed38c74fd562da848bcfb55aa4362a0ee0c2027c
