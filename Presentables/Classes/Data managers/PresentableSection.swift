@@ -36,9 +36,7 @@ public class PresentableSection: PresentableSectionMarker {
             return bindableHeader.value
         }
         set {
-            DispatchQueue.main.async {
-                self.bindableHeader.value = newValue
-            }
+            bindableHeader.value = newValue
         }
     }
     
@@ -48,9 +46,7 @@ public class PresentableSection: PresentableSectionMarker {
             return bindableFooter.value
         }
         set {
-            DispatchQueue.main.async {
-                self.bindableFooter.value = newValue
-            }
+            bindableFooter.value = newValue
         }
     }
     
@@ -60,9 +56,7 @@ public class PresentableSection: PresentableSectionMarker {
             return bindablePresenters.value ?? []
         }
         set {
-            DispatchQueue.main.async {
-                self.bindablePresenters.value = newValue
-            }
+            bindablePresenters.value = newValue
         }
     }
     
