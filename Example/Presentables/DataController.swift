@@ -45,6 +45,9 @@ extension DataController {
             }
             cell.textLabel?.text = "Cell number: \(i)"
         }
+        presenter.didSelectCell = {
+            print("Cell number: \(i) has been tapped!")
+        }
         return presenter
     }
     

@@ -7,34 +7,35 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'Presentables'
-  s.version          = '0.1.3'
-  s.summary          = 'Simple reactive library written in Swift'
+    s.name             = 'Presentables'
+    s.version          = '0.4.0'
+    s.summary          = 'Simple reactive library written in Swift'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+    # This description is used to generate tags and improve search results.
+    #   * Think: What does it do? Why did you write it? What is the focus?
+    #   * Try to keep it short, snappy and to the point.
+    #   * Write the description between the DESC delimiters below.
+    #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = "Simplify the way you use table views and collection views in your app. This library is not supposed to be competing with RxSwift at all, this is only for developers who want a quick way to simplify their screens."
+    s.description      = "Simplify the way you use table views and collection views in your app. This library is not supposed to be competing with RxSwift at all, this is only for developers who want a quick way to simplify their screens."
 
-  s.homepage         = 'https://github.com/manGoweb/Presentables'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Ondrej Rafaj' => 'dev@mangoweb.cz' }
-  s.source           = { :git => 'https://github.com/manGoweb/Presentables.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/rafiki270'
+    s.homepage         = 'https://github.com/manGoweb/Presentables'
+    # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+    s.license          = { :type => 'MIT', :file => 'LICENSE' }
+    s.author           = { 'Ondrej Rafaj' => 'dev@mangoweb.cz' }
+    s.source           = { :git => 'https://github.com/manGoweb/Presentables.git', :tag => s.version.to_s }
+    s.social_media_url = 'https://twitter.com/rafiki270'
 
-  s.ios.deployment_target = '10.1'
+    s.ios.deployment_target = '10.3'
+    s.tvos.deployment_target = '10.3'
 
-  s.source_files = 'Presentables/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'Presentables' => ['Presentables/Assets/*.png']
-  # }
+    s.source_files = 'Presentables/Classes/**/*'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+    # s.resource_bundles = {
+    #   'Presentables' => ['Presentables/Assets/*.png']
+    # }
+
+    # s.public_header_files = 'Pod/Classes/**/*.h'
+    # s.frameworks = 'UIKit', 'MapKit'
+    # s.dependency 'AFNetworking', '~> 2.3'
 end

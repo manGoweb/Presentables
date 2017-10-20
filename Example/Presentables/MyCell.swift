@@ -15,10 +15,12 @@ class MyCell: UITableViewCell, Presentable {
     
 }
 
-class MyCellPresenter: Presenter {
+class MyCellPresenter: SelectablePresenter {
     
     var presentable: Presentable.Type = MyCell.self
     
     var configure: ((Presentable) -> ())?
+    
+    var didSelectCell: (() -> ())?
     
 }

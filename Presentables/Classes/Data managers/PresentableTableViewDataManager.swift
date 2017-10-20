@@ -62,8 +62,14 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
     // MARK: Delegate
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let presenter: Presenter = data.presenter(forIndexPath: indexPath)
-        didTapCell?((presenter: presenter, indexPath: indexPath, tableView: tableView))
+        if let presenter: SelectablePresenter = data.presenter(forIndexPath: indexPath) as? SelectablePresenter {
+            presenter.didSelectCell?()
+            didTapCell?((presenter: presenter, indexPath: indexPath, tableView: tableView))
+        }
+        else {
+            let presenter: Presenter = data.presenter(forIndexPath: indexPath)
+            didTapCell?((presenter: presenter, indexPath: indexPath, tableView: tableView))
+        }
     }
     
     open func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {

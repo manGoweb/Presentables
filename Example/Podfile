@@ -1,4 +1,4 @@
-platform :ios, '10.1'
+platform :ios, '10.3'
 
 inhibit_all_warnings!
 
@@ -6,14 +6,14 @@ use_frameworks!
 
 target 'Presentables_Example' do
     pod 'Presentables', :path => '../'
-    pod 'SnapKit', '~> 3.2.0'
+    pod 'SnapKit'
     
     target 'Presentables_Tests' do
         inherit! :search_paths
         
-        pod 'Quick', '~> 1.0.0'
-        pod 'Nimble', '~> 5.1.1'
-        pod 'FBSnapshotTestCase'
-        pod 'Nimble-Snapshots'
+        pod 'Quick'
+        pod 'Nimble'
+        #pod 'FBSnapshotTestCase'
+        #pod 'Nimble-Snapshots'
     end
 end

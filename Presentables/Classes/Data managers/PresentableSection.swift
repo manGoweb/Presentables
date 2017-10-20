@@ -90,7 +90,7 @@ public extension Array where Element: PresentableSectionMarker {
         let sections: PresentableSections = sectionsOrError()
         return sections[indexPath.section].presenters[indexPath.row]
     }
-
+    
     func section(forIndexPath indexPath: IndexPath) -> PresentableSection {
         let sections: PresentableSections = sectionsOrError()
         return sections[indexPath.section]

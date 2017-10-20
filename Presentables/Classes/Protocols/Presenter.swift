@@ -16,7 +16,11 @@ public protocol Presenter: Configurable {
     
 }
 
-extension Presenter { }
+public protocol SelectablePresenter: Presenter {
+    
+    var didSelectCell: (()->())? { get }
+    
+}
 
 
 public protocol PresenterHeaderFooter: Presenter { }
