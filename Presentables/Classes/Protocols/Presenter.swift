@@ -18,7 +18,7 @@ public protocol Presenter: Configurable {
 
 public protocol SelectablePresenter: Presenter {
     
-    var didSelectCell: (()->())? { get }
+    var didSelectCell: (()->())? { get set }
     
 }
 
