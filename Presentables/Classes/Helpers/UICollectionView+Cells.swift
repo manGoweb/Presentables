@@ -31,7 +31,7 @@ extension UICollectionView {
     
     public func dequeueReusableCell(withPresenter presenter: Presenter, for indexPath: IndexPath) -> UICollectionViewCell {
         let identifier: String = presenter.presentable.identifier
-        var presentable: Presentable = dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! Presentable
+        let presentable: Presentable = dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! Presentable
         presenter.configure?(presentable)
         return presentable as! UICollectionViewCell
     }
@@ -41,7 +41,7 @@ extension UICollectionView {
             return nil
         }
         let identifier: String = presenter.presentable.identifier
-        var presentable: Presentable? = dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: identifier, for: indexPath) as? Presentable
+        let presentable: Presentable? = dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: identifier, for: indexPath) as? Presentable
         presenter.configure?(presentable!)
         return presentable as? UICollectionReusableView
     }
@@ -51,7 +51,7 @@ extension UICollectionView {
             return nil
         }
         let identifier: String = presenter.presentable.identifier
-        var presentable: Presentable? = dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: identifier, for: indexPath) as? Presentable
+        let presentable: Presentable? = dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: identifier, for: indexPath) as? Presentable
         presenter.configure?(presentable!)
         return presentable as? UICollectionReusableView
     }
