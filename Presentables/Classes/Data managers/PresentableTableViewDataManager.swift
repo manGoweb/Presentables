@@ -9,7 +9,7 @@
 import Foundation
 
 
-open class PresentableTableViewDataManager: NSObject, PresentableManager, UITableViewDataSource, UITableViewDelegate {
+open class PresentableTableViewDataManager: NSObject, TableViewPresentableManager, UITableViewDataSource, UITableViewDelegate {
     
     public var needsReloadData: (()->())?
     

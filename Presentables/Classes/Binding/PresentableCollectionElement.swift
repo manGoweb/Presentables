@@ -12,6 +12,8 @@ import UIKit
 
 public protocol PresentableCollectionElement {
     
-    func bind(withPresentableManager manager: inout PresentableManager)
+    associatedtype PresentableManagerProtocol
+    
+    func bind(withPresentableManager manager: inout PresentableManagerProtocol)
     
 }

@@ -1,5 +1,5 @@
 //
-//  MyHeader.swift
+//  TableViewHeader.swift
 //  Presentables
 //
 //  Created by Ondrej Rafaj on 15/08/2017.
@@ -12,7 +12,7 @@ import Presentables
 import SnapKit
 
 
-class MyHeader: UITableViewHeaderFooterView, Presentable {
+class TableViewHeader: UITableViewHeaderFooterView, Presentable {
     
     var titleLabel = UILabel()
     
@@ -42,9 +42,9 @@ class MyHeader: UITableViewHeaderFooterView, Presentable {
 }
 
 
-class MyHeaderPresenter: PresenterHeader {
+class TableViewHeaderPresenter: PresenterHeader {
     
-    var presentable: Presentable.Type = MyHeader.self
+    var presentable: Presentable.Type = TableViewHeader.self
     
     var configure: ((Presentable) -> ())?
     

@@ -1,8 +1,8 @@
 //
-//  DataController.swift
-//  Presentables
+//  CollectionDataController.swift
+//  Presentables_Example
 //
-//  Created by Ondrej Rafaj on 14/08/2017.
+//  Created by Ondrej Rafaj on 30/11/2017.
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
@@ -10,7 +10,10 @@ import Foundation
 import Presentables
 
 
-class DataController: PresentableTableViewDataManager {
+class CollectionDataController: PresentableCollectionViewDataManager {
+    
+    var timer: Timer!
+    
     
     // MARK: Initialization
     
@@ -20,30 +23,42 @@ class DataController: PresentableTableViewDataManager {
         loadBasicData()
         
         // Add new section every couple of seconds
-        Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { (timer) in
+        timer = Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { (timer) in
             self.loadBasicData()
         }
     }
     
-    // MARK: Overriding table view delegate
+    // MARK: Overriding collection view delegate methods
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
+    }
+    
+    // MARK: Memory management
+    
+    deinit {
+        timer.invalidate()
     }
     
 }
 
 // MARK: - Data
 
-extension DataController {
+extension CollectionDataController {
     
-    fileprivate func newPresenter(_ i: Int) -> MyCellPresenter {
-        let presenter = MyCellPresenter()
+    fileprivate func newPresenter(_ i: Int) -> CollectionViewCellPresenter {
+        let presenter = CollectionViewCellPresenter()
         presenter.configure = { presentable in
-            guard let cell = presentable as? MyCell else {
+            guard let cell = presentable as? CollectionViewCell else {
                 fatalError("Why?!")
             }
-            cell.textLabel?.text = "Cell number: \(i)"
+            cell.textLabel.text = "Cell number: \(i)"
+            
+            // Assign random color
+            let hue = CGFloat(Double(arc4random() % 256) / 256.0) // 0.0 to 1.0
+            let saturation = CGFloat(Double(arc4random() % 128) / 266.0 + 0.5) // 0.5 to 1.0, away from white
+            let brightness = CGFloat(Double(arc4random() % 128) / 256.0 + 0.5) // 0.5 to 1.0, away from black
+            cell.backgroundColor = UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
         }
         presenter.didSelectCell = {
             print("Cell number: \(i) has been tapped!")
@@ -51,10 +66,10 @@ extension DataController {
         return presenter
     }
     
-    fileprivate func newHeader(_ i: Int) -> MyHeaderPresenter {
-        let header = MyHeaderPresenter()
+    fileprivate func newHeader(_ i: Int) -> CollectionViewHeaderPresenter {
+        let header = CollectionViewHeaderPresenter()
         header.configure = { presentable in
-            guard let header = presentable as? MyHeader else {
+            guard let header = presentable as? CollectionViewHeader else {
                 fatalError("Why?!")
             }
             header.titleLabel.text = "Section: \(i)"

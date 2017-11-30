@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
     s.name             = 'Presentables'
-    s.version          = '0.4.1'
-    s.summary          = 'Simple reactive library written in Swift'
+    s.version          = '0.4.2'
+    s.summary          = 'Simple reactive library for managing table & collection views, written in Swift'
 
     # This description is used to generate tags and improve search results.
     #   * Think: What does it do? Why did you write it? What is the focus?

@@ -1,5 +1,5 @@
 //
-//  Presentable+UITableView.swift
+//  Presentables+UITableView.swift
 //  LUIElements
 //
 //  Created by Ondrej Rafaj on 24/07/2017.
@@ -26,7 +26,7 @@ extension UITableView: PresentableCollectionElement {
         }
     }
     
-    public func bind(withPresentableManager manager: inout PresentableManager) {
+    public func bind(withPresentableManager manager: inout TableViewPresentableManager) {
         let m = manager
         manager.bindableData.bind(listener: { (data) in
             for section: PresentableSection in m.data {

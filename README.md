@@ -38,13 +38,13 @@ import UIKit
 import Presentables
 
 
-class MyCell: UITableViewCell, Presentable {
+class TableViewCell: UITableViewCell, Presentable {
 
 }
 
-class MyCellPresenter: Presenter {
+class TableViewCellPresenter: Presenter {
 
-    var presentable: Presentable.Type = MyCell.self
+    var presentable: Presentable.Type = TableViewCell.self
 
     var configure: ((Presentable) -> ())?
 
@@ -65,7 +65,7 @@ class MyDataManagager: PresentableTableViewDataManager {
         let section = PresentableSection()
         
         // Every section needs a header ... obviously
-        let header = MyHeaderPresenter()
+        let header = TableViewHeaderPresenter()
         header.configure = { presentable in
             guard let header = presentable as? MyHeader else {
                 return
@@ -77,9 +77,9 @@ class MyDataManagager: PresentableTableViewDataManager {
 
         // Create some basic cells
         for i: Int in 1...5 {
-            let presenter = MyCellPresenter()
+            let presenter = TableViewCellPresenter()
             presenter.configure = { presentable in
-                guard let cell = presentable as? MyCell else {
+                guard let cell = presentable as? TableViewCell else {
                     return
                 }
                 cell.textLabel?.text = "Cell number: \(i)"
@@ -118,7 +118,7 @@ class ViewController: UITableViewController {
 
         title = "Presentables!"
 
-        var dc: PresentableManager = dataController
+        var dc: TableViewPresentableManager = dataController
         tableView.bind(withPresentableManager: &dc)
     }
 

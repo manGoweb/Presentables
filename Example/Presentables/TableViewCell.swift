@@ -1,5 +1,5 @@
 //
-//  MyCell.swift
+//  TableViewCell.swift
 //  Presentables
 //
 //  Created by Ondrej Rafaj on 14/08/2017.
@@ -11,13 +11,13 @@ import UIKit
 import Presentables
 
 
-class MyCell: UITableViewCell, Presentable {
+class TableViewCell: UITableViewCell, Presentable {
     
 }
 
-class MyCellPresenter: SelectablePresenter {
+class TableViewCellPresenter: SelectablePresenter {
     
-    var presentable: Presentable.Type = MyCell.self
+    var presentable: Presentable.Type = TableViewCell.self
     
     var configure: ((Presentable) -> ())?
     
