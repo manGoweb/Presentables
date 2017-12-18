@@ -1,11 +1,18 @@
 # Presentables
 
+[![Slack](https://img.shields.io/badge/join-slack-745EAF.svg?style=flat)](http://bit.ly/2B0dEyt)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
 [![License](https://img.shields.io/cocoapods/l/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
 [![Platform](https://img.shields.io/cocoapods/p/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
 
+## 
+
 So what is Presentables really? It is a really small library that should help you develop apps with table views a little bit faster than you would using the conventional methods. It also introduces binding of your data to the table views so any time you change your dataset, the table will update accordingly.
+
+## Slack
+
+Get help using and installing this product on our [Slack](http://bit.ly/2B0dEyt), channel #presentables
 
 ## Example
 
