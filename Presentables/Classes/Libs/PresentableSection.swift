@@ -18,29 +18,29 @@ public class PresentableSection {
         case none
     }
     
-    var bindableHeader: Observable<TypedPresentableHeader?> = Observable(nil)
-    var bindableFooter: Observable<TypedPresentableFooter?> = Observable(nil)
+//    var bindableHeader: Observable<PresentableHeader?> = Observable(nil)
+//    var bindableFooter: Observable<PresentableFooter?> = Observable(nil)
     var bindablePresenters: Observable<[PresentableCell]?> = Observable(nil)
     
-    public var headerAnimation: Animation = .none
-    public var header: TypedPresentableHeader? {
-        get {
-            return bindableHeader.value
-        }
-        set {
-            bindableHeader.value = newValue
-        }
-    }
-    
-    public var footerAnimation: Animation = .none
-    public var footer: TypedPresentableFooter? {
-        get {
-            return bindableFooter.value
-        }
-        set {
-            bindableFooter.value = newValue
-        }
-    }
+//    public var headerAnimation: Animation = .none
+//    public var header: PresentableHeader? {
+//        get {
+//            return bindableHeader.value
+//        }
+//        set {
+//            bindableHeader.value = newValue
+//        }
+//    }
+//    
+//    public var footerAnimation: Animation = .none
+//    public var footer: PresentableFooter? {
+//        get {
+//            return bindableFooter.value
+//        }
+//        set {
+//            bindableFooter.value = newValue
+//        }
+//    }
     
     public var presenterAnimation: Animation = .none
     public var presentables: [PresentableCell] {

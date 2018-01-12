@@ -53,20 +53,36 @@ public protocol PresentableCell: Presentable {
 }
 
 
-//struct AnyHeader<T: PresentableAble>: PresentableAble {
+class AnyCell<T: PresentableCell> {
+    
+//    public typealias PresentableItem = T
+//    public typealias ConfigureClosure = (T) -> Void
+//    public typealias SelectedClosure = () -> Void
 //
-//    typealias ConfigureClosure = T
+//    public var configure: ((T) -> Void)?
+//    public var selected: (() -> Void)?
 //
-//    private let presentable: T
-//
-//    init(_ presentable: T) {
-//        self.presentable = presentable
+//    @discardableResult public func cellSelected(_ selected: @escaping SelectedClosure) -> Self {
+//        self.selected = selected
+//        return self
 //    }
 //
+//    public static func create(_ configure: ConfigureClosure? = nil) -> Cell<T> {
+//        let presentable = Cell<T>()
+//        presentable.configure = configure
+//        return presentable
+//    }
+
+    private let presentable: T
+
+    init(_ presentable: T) {
+        self.presentable = presentable
+    }
+
 ////    func attack() -> T.Power {
 ////        return pokemon.attack()
 ////    }
-//}
+}
 
 
 

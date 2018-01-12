@@ -37,23 +37,23 @@ extension Array where Element: PresentableSection {
         return sections[indexPath.section]
     }
     
-    func header(forIndexPath indexPath: IndexPath) -> TypedPresentableHeader? {
-        return header(forSection: indexPath.section)
-    }
-    
-    func footer(forIndexPath indexPath: IndexPath) -> TypedPresentableFooter? {
-        return footer(forSection: indexPath.section)
-    }
-    
-    func header(forSection section: Int) -> TypedPresentableHeader? {
-        let sections: PresentableSections = sectionsOrError()
-        return sections[section].header
-    }
-    
-    func footer(forSection section: Int) -> TypedPresentableFooter? {
-        let sections: PresentableSections = sectionsOrError()
-        return sections[section].footer
-    }
+//    func header(forIndexPath indexPath: IndexPath) -> PresentableHeader? {
+//        return header(forSection: indexPath.section)
+//    }
+//
+//    func footer(forIndexPath indexPath: IndexPath) -> PresentableFooter? {
+//        return footer(forSection: indexPath.section)
+//    }
+//
+//    func header(forSection section: Int) -> PresentableHeader? {
+//        let sections: PresentableSections = sectionsOrError()
+//        return sections[section].header
+//    }
+//
+//    func footer(forSection section: Int) -> PresentableFooter? {
+//        let sections: PresentableSections = sectionsOrError()
+//        return sections[section].footer
+//    }
     
     // MARK: Private helpers
     

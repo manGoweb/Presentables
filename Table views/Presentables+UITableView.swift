@@ -62,16 +62,16 @@ extension UITableView: PresentableCollectionElement {
     
     func register(section: PresentableSection) {
         DispatchQueue.global().async {
-            if section.bindableHeader.listener == nil {
-                section.bindableHeader.bind(listener: { (header) in
-                    self.safeReloadData()
-                })
-            }
-            if section.bindableFooter.listener == nil {
-                section.bindableFooter.bind(listener: { (footer) in
-                    self.safeReloadData()
-                })
-            }
+//            if section.bindableHeader.listener == nil {
+//                section.bindableHeader.bind(listener: { (header) in
+//                    self.safeReloadData()
+//                })
+//            }
+//            if section.bindableFooter.listener == nil {
+//                section.bindableFooter.bind(listener: { (footer) in
+//                    self.safeReloadData()
+//                })
+//            }
             if section.bindablePresenters.listener == nil {
                 section.bindablePresenters.bind(listener: { (presenters) in
                     self.safeReloadData()

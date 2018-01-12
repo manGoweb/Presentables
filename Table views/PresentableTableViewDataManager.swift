@@ -15,8 +15,8 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     
     public typealias PresentableTableViewDataManagerActionInfo = (presentable: PresentableCell, indexPath: IndexPath, tableView: UITableView)
     
-    open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
-    open var didTapAccessoryButton: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
+//    open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
+//    open var didTapAccessoryButton: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
     
     public var bindableData: Observable<PresentableSections> = Observable([])
     public var data: PresentableSections {
@@ -58,15 +58,15 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
         return cell!
     }
     
-    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // TODO: Optimise reusable code!!!! Footer is almost the same
-        
-        guard let presentable = data.header(forSection: section) else {
-            return nil
-        }
-        
+//    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        // TODO: Optimise reusable code!!!! Footer is almost the same
+//
+//        guard let presentable = data.header(forSection: section) else {
+//            return nil
+//        }
+//
 //        guard presentable.
-
+//
 //        let identifier: String = presentable.identifier
 //        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
 //        if view == nil {
@@ -81,47 +81,47 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
 //            return nil
 //        }
 //        presentable.configure?(v)
-
-        return nil
-    }
-
-    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        // TODO: Optimise reusable code!!!! Header is almost the same
-        guard let presentable = data.footer(forSection: section) as? PresentableFooter<UITableViewHeaderFooterView> else {
-            return nil
-        }
-
-        let identifier: String = presentable.identifier
-        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
-        if view == nil {
-            // TODO: Does the following needs to be made more type safe?
-            tableView.register(presentable.reusableType)
-            view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
-            guard view != nil else {
-                return nil
-            }
-        }
-        guard let v = view else {
-            return nil
-        }
-        presentable.configure?(v)
-
-        return v
-    }
-    
-    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let _ = data.header(forSection: section) as? PresentableHeader<UITableViewHeaderFooterView> else {
-            return 0
-        }
-        return UITableViewAutomaticDimension
-    }
-    
-    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        guard let _ = data.footer(forSection: section) as? PresentableFooter<UITableViewHeaderFooterView> else {
-            return 0
-        }
-        return UITableViewAutomaticDimension
-    }
+//
+//        return nil
+//    }
+//
+//    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        // TODO: Optimise reusable code!!!! Header is almost the same
+//        guard let presentable = data.footer(forSection: section) as? PresentableFooter<UITableViewHeaderFooterView> else {
+//            return nil
+//        }
+//
+//        let identifier: String = presentable.identifier
+//        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
+//        if view == nil {
+//            // TODO: Does the following needs to be made more type safe?
+//            tableView.register(presentable.reusableType)
+//            view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
+//            guard view != nil else {
+//                return nil
+//            }
+//        }
+//        guard let v = view else {
+//            return nil
+//        }
+//        presentable.configure?(v)
+//
+//        return v
+//    }
+//
+//    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        guard let _ = data.header(forSection: section) as? PresentableHeader<UITableViewHeaderFooterView> else {
+//            return 0
+//        }
+//        return UITableViewAutomaticDimension
+//    }
+//
+//    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        guard let _ = data.footer(forSection: section) as? PresentableFooter<UITableViewHeaderFooterView> else {
+//            return 0
+//        }
+//        return UITableViewAutomaticDimension
+//    }
 
     // MARK: Delegate
     
