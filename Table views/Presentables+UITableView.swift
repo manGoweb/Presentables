@@ -41,8 +41,8 @@ extension UITableView: PresentableCollectionElement {
             self.safeReloadData()
         }
         
-        dataSource = manager as? UITableViewDataSource
         delegate = manager as? UITableViewDelegate
+        dataSource = manager as? UITableViewDataSource
     }
     
     func register(presentableSections sections: inout PresentableSections) {

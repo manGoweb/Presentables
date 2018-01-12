@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Section generators
 
-public extension Array where Element == Presentable<UITableViewCell> {
+public extension Array where Element == TypedPresentableCell {
     
     public var section: PresentableSection {
         get {
@@ -25,9 +25,9 @@ public extension Array where Element == Presentable<UITableViewCell> {
 
 // MARK: - Dynamic helpers for PresentableSections
 
-public extension Array where Element: PresentableSectionMarker {
+extension Array where Element: PresentableSection {
     
-    func presentable(forIndexPath indexPath: IndexPath) -> Presentable<UITableViewCell> {
+    func presentable(forIndexPath indexPath: IndexPath) -> TypedPresentableCell {
         let sections: PresentableSections = sectionsOrError()
         return sections[indexPath.section].presentables[indexPath.row]
     }
@@ -37,20 +37,20 @@ public extension Array where Element: PresentableSectionMarker {
         return sections[indexPath.section]
     }
     
-    func header(forIndexPath indexPath: IndexPath) -> Presentable<Reusable>? {
+    func header(forIndexPath indexPath: IndexPath) -> TypedPresentableHeader? {
         return header(forSection: indexPath.section)
     }
     
-    func footer(forIndexPath indexPath: IndexPath) -> Presentable<Reusable>? {
+    func footer(forIndexPath indexPath: IndexPath) -> TypedPresentableFooter? {
         return footer(forSection: indexPath.section)
     }
     
-    func header(forSection section: Int) -> Presentable<Reusable>? {
+    func header(forSection section: Int) -> TypedPresentableHeader? {
         let sections: PresentableSections = sectionsOrError()
         return sections[section].header
     }
     
-    func footer(forSection section: Int) -> Presentable<Reusable>? {
+    func footer(forSection section: Int) -> TypedPresentableFooter? {
         let sections: PresentableSections = sectionsOrError()
         return sections[section].footer
     }

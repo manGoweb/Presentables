@@ -13,7 +13,7 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     
     public var needsReloadData: (()->())?
     
-    public typealias PresentableTableViewDataManagerActionInfo = (presentable: Presentable<UITableViewCell>, indexPath: IndexPath, tableView: UITableView)
+    public typealias PresentableTableViewDataManagerActionInfo = (presentable: TypedPresentableCell, indexPath: IndexPath, tableView: UITableView)
     
     open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
     open var didTapAccessoryButton: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
@@ -42,13 +42,15 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let presentable = data.presentable(forIndexPath: indexPath)
+        guard let presentable = data.presentable(forIndexPath: indexPath) as? PresentableCell<UITableViewCell> else {
+            fatalError("Presentable class needs to have type UITableViewCell")
+        }
         
         let identifier: String = presentable.identifier
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: identifier)
         if cell == nil {
             // TODO: Following needs to be made more type safe?
-            tableView.register(presentable.reusableType as! UITableViewCell.Type)
+            tableView.register(presentable.reusableType)
             cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         }
         presentable.configure?(cell!)
@@ -57,39 +59,42 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // TODO: Optimise reusable code!!!! Footer is almost the same
-        guard let presentable: Presentable = data.header(forSection: section) else {
+        
+        guard let presentable = data.header(forSection: section) else {
             return nil
         }
         
-        let identifier: String = presentable.identifier
-        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
-        if view == nil {
-            // TODO: Following needs to be made more type safe?
-            tableView.register(presentable.reusableType as! UITableViewHeaderFooterView.Type)
-            view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
-            guard view != nil else {
-                return nil
-            }
-        }
-        guard let v = view else {
-            return nil
-        }
-        presentable.configure?(v)
-        
-        return v
+//        guard presentable.
+
+//        let identifier: String = presentable.identifier
+//        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
+//        if view == nil {
+//            // TODO: Does the following needs to be made more type safe?
+//            tableView.register(presentable.reusableType)
+//            view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
+//            guard view != nil else {
+//                return nil
+//            }
+//        }
+//        guard let v = view else {
+//            return nil
+//        }
+//        presentable.configure?(v)
+
+        return nil
     }
 
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         // TODO: Optimise reusable code!!!! Header is almost the same
-        guard let presentable: Presentable = data.footer(forSection: section) else {
+        guard let presentable: Presentable = data.footer(forSection: section) as? PresentableFooter<UITableViewHeaderFooterView> else {
             return nil
         }
-        
+
         let identifier: String = presentable.identifier
         var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
         if view == nil {
-            // TODO: Following needs to be made more type safe?
-            tableView.register(presentable.reusableType as! UITableViewHeaderFooterView.Type)
+            // TODO: Does the following needs to be made more type safe?
+            tableView.register(presentable.reusableType)
             view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
             guard view != nil else {
                 return nil
@@ -99,25 +104,37 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
             return nil
         }
         presentable.configure?(v)
-        
+
         return v
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let _ = data.header(forSection: section) as? PresentableHeader<UITableViewHeaderFooterView> else {
+            return 0
+        }
+        return UITableViewAutomaticDimension
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard let _ = data.footer(forSection: section) as? PresentableFooter<UITableViewHeaderFooterView> else {
+            return 0
+        }
+        return UITableViewAutomaticDimension
     }
 
     // MARK: Delegate
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let presentable: Presentable = data.presentable(forIndexPath: indexPath) {
-//            presentable.didSelectCell?()
-//            didTapCell?((presentable: presentable, indexPath: indexPath, tableView: tableView))
-//        }
-//        else {
-            let presentable: Presentable = data.presentable(forIndexPath: indexPath)
-            didTapCell?((presentable: presentable, indexPath: indexPath, tableView: tableView))
-//        }
+        guard let presentable: PresentableCell = data.presentable(forIndexPath: indexPath) as? PresentableCell<Any> else {
+            fatalError("Presentable class needs to have type UITableViewCell")
+        }
+        
+        presentable.selected?()
+        didTapCell?((presentable: presentable, indexPath: indexPath, tableView: tableView))
     }
 
     open func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let presentable: Presentable = data.presentable(forIndexPath: indexPath)
+        let presentable = data.presentable(forIndexPath: indexPath)
         didTapAccessoryButton?((presentable: presentable, indexPath: indexPath, tableView: tableView))
     }
     

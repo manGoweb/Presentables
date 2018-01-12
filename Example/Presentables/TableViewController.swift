@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import UIKit
 import Presentables
 
 
 class TableViewController: UITableViewController {
     
-    let dataController = TableDataController()
+    var manager: TableViewPresentableManager = TableDataManager()
     
     
     // MARK: View lifecycle
@@ -20,10 +21,9 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "UITableView"
+        title = "UITableView with manager"
         
-        var dc: TableViewPresentableManager = dataController
-        tableView.bind(withPresentableManager: &dc)
+        tableView.bind(withPresentableManager: &manager)
     }
 
 }

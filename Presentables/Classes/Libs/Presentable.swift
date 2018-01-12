@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 
 
+public typealias TypedPresentableHeader = Any
+public typealias TypedPresentableFooter = Any
+public typealias TypedPresentableCell = Any
+
+
 open class Presentable<T> {
     
     public typealias ConfigureClosure = (T) -> Void
@@ -27,15 +32,50 @@ open class Presentable<T> {
     }
     
     var selected: SelectedClosure?
+    
+}
+
+
+open class PresentableCell<T>: Presentable<T> {
+    
     @discardableResult public func cellSelected(_ selected: @escaping SelectedClosure) -> Self {
         self.selected = selected
         return self
     }
     
-    public static func create(_ configure: ConfigureClosure? = nil) -> Presentable<T> {
-        let presentable = Presentable<T>()
+    public static func create(_ configure: ConfigureClosure? = nil) -> PresentableCell<T> {
+        let presentable = PresentableCell<T>()
         presentable.configure = configure
         return presentable
     }
     
+    public override init() { }
+    
 }
+
+
+open class PresentableHeader<T>: Presentable<T> {
+    
+    public static func create(_ configure: ConfigureClosure? = nil) -> PresentableHeader<T> {
+        let presentable = PresentableHeader<T>()
+        presentable.configure = configure
+        return presentable
+    }
+    
+    public override init() { }
+    
+}
+
+
+open class PresentableFooter<T>: Presentable<T> {
+    
+    public static func create(_ configure: ConfigureClosure? = nil) -> PresentableFooter<T> {
+        let presentable = PresentableFooter<T>()
+        presentable.configure = configure
+        return presentable
+    }
+    
+    public override init() { }
+    
+}
+
