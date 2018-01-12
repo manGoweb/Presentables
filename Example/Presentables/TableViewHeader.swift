@@ -12,7 +12,7 @@ import Presentables
 import SnapKit
 
 
-class TableViewHeader: UITableViewHeaderFooterView, Presentable {
+class TableViewHeader: UITableViewHeaderFooterView {
     
     var titleLabel = UILabel()
     
@@ -41,11 +41,3 @@ class TableViewHeader: UITableViewHeaderFooterView, Presentable {
     
 }
 
-
-class TableViewHeaderPresenter: PresenterHeader {
-    
-    var presentable: Presentable.Type = TableViewHeader.self
-    
-    var configure: ((Presentable) -> ())?
-    
-}

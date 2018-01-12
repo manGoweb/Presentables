@@ -10,12 +10,12 @@ import Foundation
 
 // MARK: - Section generators
 
-public extension Array where Element == Presenter {
+public extension Array where Element == Presentable<Any> {
     
     public var section: PresentableSection {
         get {
             let section = PresentableSection()
-            section.presenters = self
+            section.presentables = self
             return section
         }
     }
@@ -27,9 +27,9 @@ public extension Array where Element == Presenter {
 
 public extension Array where Element: PresentableSectionMarker {
     
-    func presenter(forIndexPath indexPath: IndexPath) -> Presenter {
+    func presentable(forIndexPath indexPath: IndexPath) -> Presentable<Any> {
         let sections: PresentableSections = sectionsOrError()
-        return sections[indexPath.section].presenters[indexPath.row]
+        return sections[indexPath.section].presentables[indexPath.row]
     }
     
     func section(forIndexPath indexPath: IndexPath) -> PresentableSection {
@@ -37,20 +37,20 @@ public extension Array where Element: PresentableSectionMarker {
         return sections[indexPath.section]
     }
     
-    func header(forIndexPath indexPath: IndexPath) -> PresenterHeader? {
+    func header(forIndexPath indexPath: IndexPath) -> Presentable<Reusable>? {
         return header(forSection: indexPath.section)
     }
     
-    func footer(forIndexPath indexPath: IndexPath) -> PresenterFooter? {
+    func footer(forIndexPath indexPath: IndexPath) -> Presentable<Reusable>? {
         return footer(forSection: indexPath.section)
     }
     
-    func header(forSection section: Int) -> PresenterHeader? {
+    func header(forSection section: Int) -> Presentable<Reusable>? {
         let sections: PresentableSections = sectionsOrError()
         return sections[section].header
     }
     
-    func footer(forSection section: Int) -> PresenterFooter? {
+    func footer(forSection section: Int) -> Presentable<Reusable>? {
         let sections: PresentableSections = sectionsOrError()
         return sections[section].footer
     }
@@ -65,3 +65,4 @@ public extension Array where Element: PresentableSectionMarker {
     }
     
 }
+

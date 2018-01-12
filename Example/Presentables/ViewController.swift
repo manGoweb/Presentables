@@ -54,8 +54,8 @@ class ViewController: UIViewController {
     }
     
     @objc func didTapCollectionButton() {
-        let c = CollectionViewController()
-        navigationController?.pushViewController(c, animated: true)
+//        let c = CollectionViewController()
+//        navigationController?.pushViewController(c, animated: true)
     }
     
 }

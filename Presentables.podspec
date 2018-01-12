@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'Presentables'
-    s.version          = '0.4.4'
+    s.version          = '0.5.0'
     s.summary          = 'Simple reactive library for managing table & collection views, written in Swift'
 
     # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
     s.social_media_url = 'https://twitter.com/rafiki270'
 
     s.ios.deployment_target = '10.1'
-    s.tvos.deployment_target = '10.3'
+    s.tvos.deployment_target = '10.2'
 
     s.source_files = 'Presentables/Classes/**/*'
 

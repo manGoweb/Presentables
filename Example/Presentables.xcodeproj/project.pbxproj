@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		156D7AA51F422E570075ACE7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AA41F422E570075ACE7 /* TableViewCell.swift */; };
 		156D7AFA1F431A150075ACE7 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AF91F431A150075ACE7 /* TableViewHeader.swift */; };
 		15A895541FD0A1BD00347281 /* TableDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A895531FD0A1BD00347281 /* TableDataController.swift */; };
-		15A895561FD0A1C900347281 /* CollectionDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A895551FD0A1C900347281 /* CollectionDataController.swift */; };
-		15A895581FD0AFFE00347281 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A895571FD0AFFE00347281 /* CollectionViewCell.swift */; };
-		15A8955A1FD0B8AD00347281 /* CollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A895591FD0B8AD00347281 /* CollectionViewHeader.swift */; };
-		15CA94751FD0406E001AA1FE /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA94741FD0406E001AA1FE /* CollectionViewController.swift */; };
 		15CA94771FD0408F001AA1FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA94761FD0408F001AA1FE /* ViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* TableViewController.swift */; };
@@ -420,13 +415,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15CA94751FD0406E001AA1FE /* CollectionViewController.swift in Sources */,
-				15A8955A1FD0B8AD00347281 /* CollectionViewHeader.swift in Sources */,
-				15A895561FD0A1C900347281 /* CollectionDataController.swift in Sources */,
-				15A895581FD0AFFE00347281 /* CollectionViewCell.swift in Sources */,
 				607FACD81AFB9204008FA782 /* TableViewController.swift in Sources */,
 				15A895541FD0A1BD00347281 /* TableDataController.swift in Sources */,
-				156D7AA51F422E570075ACE7 /* TableViewCell.swift in Sources */,
 				15CA94771FD0408F001AA1FE /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				156D7AFA1F431A150075ACE7 /* TableViewHeader.swift in Sources */,

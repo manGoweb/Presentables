@@ -1,6 +1,6 @@
 //
 //  PresentableSection.swift
-//  LUIElements
+//  Presentables
 //
 //  Created by Ondrej Rafaj on 24/07/2017.
 //  Copyright © 2017 manGoweb UK Ltd. All rights reserved.
@@ -12,26 +12,27 @@ import Foundation
 public typealias PresentableSections = [PresentableSection]
 
 
-public enum PresentableAnimation {
-    case none
-}
-
 public protocol PresentableSectionMarker {
-    var header: PresenterHeader? { get set }
-    var footer: PresenterFooter? { get set }
-    var presenters: [Presenter] { get set }
+    // TODO: Replace any with headers and footers?
+    var header: Presentable<Reusable>? { get set }
+    var footer: Presentable<Reusable>? { get set }
+    var presentables: [Presentable<Any>] { get set }
 }
 
 public typealias PresentableSectionMarkers = [PresentableSectionMarker]
 
 public class PresentableSection: PresentableSectionMarker {
     
-    var bindableHeader: Observable<PresenterHeader?> = Observable(nil)
-    var bindableFooter: Observable<PresenterFooter?> = Observable(nil)
-    var bindablePresenters: Observable<[Presenter]?> = Observable(nil)
+    public enum Animation {
+        case none
+    }
     
-    public var headerAnimation: PresentableAnimation = .none
-    public var header: PresenterHeader? {
+    var bindableHeader: Observable<Presentable<Reusable>?> = Observable(nil)
+    var bindableFooter: Observable<Presentable<Reusable>?> = Observable(nil)
+    var bindablePresenters: Observable<[Presentable<Any>]?> = Observable(nil)
+    
+    public var headerAnimation: Animation = .none
+    public var header: Presentable<Reusable>? {
         get {
             return bindableHeader.value
         }
@@ -40,8 +41,8 @@ public class PresentableSection: PresentableSectionMarker {
         }
     }
     
-    public var footerAnimation: PresentableAnimation = .none
-    public var footer: PresenterFooter? {
+    public var footerAnimation: Animation = .none
+    public var footer: Presentable<Reusable>? {
         get {
             return bindableFooter.value
         }
@@ -50,8 +51,8 @@ public class PresentableSection: PresentableSectionMarker {
         }
     }
     
-    public var presenterAnimation: PresentableAnimation = .none
-    public var presenters: [Presenter] {
+    public var presenterAnimation: Animation = .none
+    public var presentables: [Presentable<Any>] {
         get {
             return bindablePresenters.value ?? []
         }
@@ -62,8 +63,6 @@ public class PresentableSection: PresentableSectionMarker {
     
     // MARK: Initialization
     
-    public init() {
-        
-    }
+    public init() { }
     
 }
