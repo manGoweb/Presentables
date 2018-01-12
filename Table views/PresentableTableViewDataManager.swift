@@ -43,7 +43,8 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let presentable = data.presentable(forIndexPath: indexPath)
-        guard presentable is PresentableCell else {
+        
+        guard presentable.reusableType is UITableViewCell else {
             fatalError("Presentable class needs to have type UITableViewCell")
         }
         
@@ -51,7 +52,7 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: identifier)
         if cell == nil {
             // TODO: Following needs to be made more type safe?
-            tableView.register(presentable.reusableType)
+            tableView.register(presentable.reusableType as! UITableViewCell)
             cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         }
         presentable.configure?(cell!)
