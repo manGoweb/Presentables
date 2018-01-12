@@ -20,7 +20,7 @@ public class PresentableSection {
     
     var bindableHeader: Observable<TypedPresentableHeader?> = Observable(nil)
     var bindableFooter: Observable<TypedPresentableFooter?> = Observable(nil)
-    var bindablePresenters: Observable<[TypedPresentableCell]?> = Observable(nil)
+    var bindablePresenters: Observable<[PresentableCell]?> = Observable(nil)
     
     public var headerAnimation: Animation = .none
     public var header: TypedPresentableHeader? {
@@ -43,7 +43,7 @@ public class PresentableSection {
     }
     
     public var presenterAnimation: Animation = .none
-    public var presentables: [TypedPresentableCell] {
+    public var presentables: [PresentableCell] {
         get {
             return bindablePresenters.value ?? []
         }

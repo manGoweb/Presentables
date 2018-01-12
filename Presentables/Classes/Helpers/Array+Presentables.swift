@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Section generators
 
-public extension Array where Element == TypedPresentableCell {
+public extension Array where Element == PresentableCell {
     
     public var section: PresentableSection {
         get {
@@ -27,7 +27,7 @@ public extension Array where Element == TypedPresentableCell {
 
 extension Array where Element: PresentableSection {
     
-    func presentable(forIndexPath indexPath: IndexPath) -> TypedPresentableCell {
+    func presentable(forIndexPath indexPath: IndexPath) -> PresentableCell {
         let sections: PresentableSections = sectionsOrError()
         return sections[indexPath.section].presentables[indexPath.row]
     }

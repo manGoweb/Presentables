@@ -10,72 +10,127 @@ import Foundation
 import UIKit
 
 
-public typealias TypedPresentableHeader = Any
-public typealias TypedPresentableFooter = Any
-public typealias TypedPresentableCell = Any
+public protocol Presentable {
+    
+    associatedtype PresentableItem
+    associatedtype ConfigureClosure
+    associatedtype SelectedClosure
+    
+    var configure: ConfigureClosure? { get set }
+    var selected: SelectedClosure? { get set }
+    
+}
 
-
-open class Presentable<T> {
+extension Presentable {
     
-    public typealias ConfigureClosure = (T) -> Void
-    public typealias SelectedClosure = () -> Void
-    
-    public typealias PresentableItem = T
-    public var configure: ConfigureClosure?
-    
-    open var identifier: String {
-        return String(describing: T.self)
+    public var identifier: String {
+        return String(describing: PresentableItem.self)
     }
     
-    public var reusableType: T.Type {
-        return T.self
+    public var reusableType: PresentableItem.Type {
+        return PresentableItem.self
     }
     
-    var selected: SelectedClosure?
+}
+
+public protocol PresentableHeader: Presentable {
+    
+    static func create(_ configure: ConfigureClosure?) -> Cell<PresentableItem>
+    
+}
+
+public protocol PresentableFooter: Presentable {
+    
+    static func create(_ configure: ConfigureClosure?) -> Cell<PresentableItem>
+    
+}
+
+public protocol PresentableCell: Presentable {
+    
+    @discardableResult func cellSelected(_ selected: SelectedClosure) -> Self
+    static func create(_ configure: ConfigureClosure?) -> Cell<PresentableItem>
     
 }
 
 
-open class PresentableCell<T>: Presentable<T> {
+//struct AnyHeader<T: PresentableAble>: PresentableAble {
+//
+//    typealias ConfigureClosure = T
+//
+//    private let presentable: T
+//
+//    init(_ presentable: T) {
+//        self.presentable = presentable
+//    }
+//
+////    func attack() -> T.Power {
+////        return pokemon.attack()
+////    }
+//}
+
+
+
+open class Cell<T>: Presentable {
+    
+    public typealias PresentableItem = T
+    public typealias ConfigureClosure = (T) -> Void
+    public typealias SelectedClosure = () -> Void
+    
+    public var configure: ((T) -> Void)?
+    public var selected: (() -> Void)?
     
     @discardableResult public func cellSelected(_ selected: @escaping SelectedClosure) -> Self {
         self.selected = selected
         return self
     }
     
-    public static func create(_ configure: ConfigureClosure? = nil) -> PresentableCell<T> {
-        let presentable = PresentableCell<T>()
+    public static func create(_ configure: ConfigureClosure? = nil) -> Cell<T> {
+        let presentable = Cell<T>()
         presentable.configure = configure
         return presentable
     }
     
-    public override init() { }
+    public init() { }
     
 }
 
 
-open class PresentableHeader<T>: Presentable<T> {
+open class Header<T>: Presentable {
     
-    public static func create(_ configure: ConfigureClosure? = nil) -> PresentableHeader<T> {
-        let presentable = PresentableHeader<T>()
+    public typealias PresentableItem = T
+    public typealias ConfigureClosure = (T) -> Void
+    public typealias SelectedClosure = () -> Void
+    
+    public var configure: ((T) -> Void)?
+    public var selected: (() -> Void)?
+    
+    public static func create(_ configure: ConfigureClosure? = nil) -> Header<T> {
+        let presentable = Header<T>()
         presentable.configure = configure
         return presentable
     }
     
-    public override init() { }
+    public init() { }
     
 }
 
 
-open class PresentableFooter<T>: Presentable<T> {
+open class Footer<T>: Presentable {
     
-    public static func create(_ configure: ConfigureClosure? = nil) -> PresentableFooter<T> {
-        let presentable = PresentableFooter<T>()
+    public typealias PresentableItem = T
+    public typealias ConfigureClosure = (T) -> Void
+    public typealias SelectedClosure = () -> Void
+    
+    public var configure: ((T) -> Void)?
+    public var selected: (() -> Void)?
+    
+    public static func create(_ configure: ConfigureClosure? = nil) -> Footer<T> {
+        let presentable = Footer<T>()
         presentable.configure = configure
         return presentable
     }
     
-    public override init() { }
+    public init() { }
     
 }
 

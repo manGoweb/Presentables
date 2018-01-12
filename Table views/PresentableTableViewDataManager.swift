@@ -13,7 +13,7 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     
     public var needsReloadData: (()->())?
     
-    public typealias PresentableTableViewDataManagerActionInfo = (presentable: TypedPresentableCell, indexPath: IndexPath, tableView: UITableView)
+    public typealias PresentableTableViewDataManagerActionInfo = (presentable: PresentableCell, indexPath: IndexPath, tableView: UITableView)
     
     open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
     open var didTapAccessoryButton: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
@@ -42,7 +42,8 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let presentable = data.presentable(forIndexPath: indexPath) as? PresentableCell<UITableViewCell> else {
+        let presentable = data.presentable(forIndexPath: indexPath)
+        guard presentable is PresentableCell else {
             fatalError("Presentable class needs to have type UITableViewCell")
         }
         
@@ -86,7 +87,7 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
 
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         // TODO: Optimise reusable code!!!! Header is almost the same
-        guard let presentable: Presentable = data.footer(forSection: section) as? PresentableFooter<UITableViewHeaderFooterView> else {
+        guard let presentable = data.footer(forSection: section) as? PresentableFooter<UITableViewHeaderFooterView> else {
             return nil
         }
 
@@ -125,10 +126,7 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     // MARK: Delegate
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let presentable: PresentableCell = data.presentable(forIndexPath: indexPath) as? PresentableCell<Any> else {
-            fatalError("Presentable class needs to have type UITableViewCell")
-        }
-        
+        let presentable = data.presentable(forIndexPath: indexPath)
         presentable.selected?()
         didTapCell?((presentable: presentable, indexPath: indexPath, tableView: tableView))
     }
