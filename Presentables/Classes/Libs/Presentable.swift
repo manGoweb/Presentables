@@ -47,42 +47,97 @@ public protocol PresentableFooter: Presentable {
 
 public protocol PresentableCell: Presentable {
     
-    @discardableResult func cellSelected(_ selected: SelectedClosure) -> Self
+    @discardableResult func cellSelected(_ selected: SelectedClosure)
     static func create(_ configure: ConfigureClosure?) -> Cell<PresentableItem>
     
 }
 
 
-class AnyCell<T: PresentableCell> {
-    
-//    public typealias PresentableItem = T
-//    public typealias ConfigureClosure = (T) -> Void
-//    public typealias SelectedClosure = () -> Void
-//
-//    public var configure: ((T) -> Void)?
-//    public var selected: (() -> Void)?
-//
-//    @discardableResult public func cellSelected(_ selected: @escaping SelectedClosure) -> Self {
-//        self.selected = selected
-//        return self
-//    }
-//
-//    public static func create(_ configure: ConfigureClosure? = nil) -> Cell<T> {
-//        let presentable = Cell<T>()
-//        presentable.configure = configure
-//        return presentable
-//    }
+// Type-erasure magic
 
-    private let presentable: T
+private class _AnyPresentableCellBase<PresentableItem, ConfigureClosure, SelectedClosure>: PresentableCell {
 
-    init(_ presentable: T) {
-        self.presentable = presentable
+    init() {
+        guard type(of: self) != _AnyPresentableCellBase.self else {
+            fatalError("_AnyCoordinatorBase<FlowObservable> instances can not be created, only subclasses")
+        }
     }
 
-////    func attack() -> T.Power {
-////        return pokemon.attack()
-////    }
+    var configure: ConfigureClosure {
+        preconditionFailure("oops")
+    }
+
+    var selected: SelectedClosure {
+        preconditionFailure()
+    }
+
+    // TODO: fix
+    func cellSelected(_ selected: SelectedClosure) {
+        preconditionFailure()
+    }
+
+    static func create(_ configure: ConfigureClosure?) -> Cell<PresentableItem> {
+        preconditionFailure()
+    }
 }
+
+private final class _AnyPresentableCellBox<Concrete: PresentableCell>: _AnyPresentableCellBase<Concrete.PresentableItem, Concrete.ConfigureClosure, Concrete.SelectedClosure> {
+    let concrete: Concrete
+
+    init(_ concrete: Concrete) {
+        self.concrete = concrete
+    }
+
+    var configure: ConfigureClosure? {
+        return concrete.configure
+    }
+
+    var selected: _AnyPresentableCellBox<Concrete>.SelectedClosure? {
+        return concrete.selected
+    }
+
+    override func cellSelected(_ selected: Concrete.SelectedClosure) {
+        concrete.cellSelected(selected)
+    }
+
+    static func create(_ configure: _AnyPresentableCellBox<Concrete>.ConfigureClosure?) -> Cell<_AnyPresentableCellBox<Concrete>.PresentableItem> {
+        return Concrete.create(configure)
+    }
+}
+
+final public class AnyPresentableCell<PresentableItemThing, ConfigureClosureThing, SelectedClosureThing>: PresentableCell {
+
+    public typealias PresentableItem = PresentableItemThing
+
+    public typealias ConfigureClosure = ConfigureClosureThing
+
+    public typealias SelectedClosure = SelectedClosureThing
+
+
+    private let box: _AnyPresentableCellBase<PresentableItem, ConfigureClosure, SelectedClosure>
+
+    init<Concrete: PresentableCell>(_ concrete: Concrete) where Concrete.ConfigureClosure == ConfigureClosure, Concrete.PresentableItem == PresentableItem, Concrete.SelectedClosure == SelectedClosure {
+        box = _AnyPresentableCellBox(concrete)
+    }
+
+    public var configure: ConfigureClosureThing? {
+        return box.configure
+    }
+
+    public var selected: SelectedClosureThing? {
+        return box.selected
+    }
+
+    public func cellSelected(_ selected: AnyPresentableCell<PresentableItem, ConfigureClosure, SelectedClosure>.SelectedClosure) {
+        return box.cellSelected(selected)
+    }
+
+    public static func create(_ configure: ConfigureClosure?) -> Cell<AnyPresentableCell<PresentableItem, ConfigureClosure, SelectedClosure>.PresentableItem> {
+        _AnyPresentableCellBase.create(configure as! ConfigureClosureThing as! _)
+    }
+ }
+
+
 
 
 
@@ -112,6 +167,8 @@ open class Cell<T>: Presentable {
 
 
 open class Header<T>: Presentable {
+
+    let headers: [AnyHeader<MyItem, MyConfigure, MySelected>]
     
     public typealias PresentableItem = T
     public typealias ConfigureClosure = (T) -> Void

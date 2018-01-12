@@ -57,7 +57,7 @@ extension Array where Element: PresentableSection {
     
     // MARK: Private helpers
     
-    private func sectionsOrError() -> PresentableSections {
+    func sectionsOrError() -> PresentableSections {
         guard let sections = self as? PresentableSections else {
             fatalError("Object PresentableSection not present")
         }

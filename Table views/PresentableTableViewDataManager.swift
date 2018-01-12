@@ -127,7 +127,9 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     // MARK: Delegate
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let presentable = data.presentable(forIndexPath: indexPath)
+//        let presentable = data.presentable(forIndexPath: indexPath)
+        let sections: PresentableSections = data.sectionsOrError()
+        let presentable = sections[indexPath.section].presentables[indexPath.row]
         presentable.selected?()
         didTapCell?((presentable: presentable, indexPath: indexPath, tableView: tableView))
     }
