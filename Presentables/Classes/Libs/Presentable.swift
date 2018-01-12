@@ -39,4 +39,3 @@ open class Presentable<T> {
     }
     
 }
-

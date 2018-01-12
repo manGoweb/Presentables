@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Section generators
 
-public extension Array where Element == Presentable<Any> {
+public extension Array where Element == Presentable<UITableViewCell> {
     
     public var section: PresentableSection {
         get {
@@ -27,7 +27,7 @@ public extension Array where Element == Presentable<Any> {
 
 public extension Array where Element: PresentableSectionMarker {
     
-    func presentable(forIndexPath indexPath: IndexPath) -> Presentable<Any> {
+    func presentable(forIndexPath indexPath: IndexPath) -> Presentable<UITableViewCell> {
         let sections: PresentableSections = sectionsOrError()
         return sections[indexPath.section].presentables[indexPath.row]
     }

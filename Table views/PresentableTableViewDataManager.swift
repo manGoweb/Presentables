@@ -13,7 +13,7 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
     
     public var needsReloadData: (()->())?
     
-    public typealias PresentableTableViewDataManagerActionInfo = (presentable: Presentable<Any>, indexPath: IndexPath, tableView: UITableView)
+    public typealias PresentableTableViewDataManagerActionInfo = (presentable: Presentable<UITableViewCell>, indexPath: IndexPath, tableView: UITableView)
     
     open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
     open var didTapAccessoryButton: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
