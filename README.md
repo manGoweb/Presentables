@@ -61,6 +61,71 @@ class TableDataManager: PresentableTableViewDataManager {
     override init() {
         super.init()
         
+        // Create a cell with custom tap event
+        let presentable = Presentable<TableViewCell1>.create({ (cell) in
+            cell.textLabel?.text = "First cell"
+        }).cellSelected {
+            print("First cell has been selected")
+        }
+        section.presentables.append(presentable)
+        
+        // Now add your section to the data source
+        data.append(section)
+    }
+    
+    // MARK: Overriding table view delegate (optional)
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
+}
+```
+
+And lastly, bind your table view to your data manager
+
+```Swift
+import UIKit
+import Presentables
+
+
+class ViewController: UITableViewController {
+
+	let dataController = TableDataManager()
+    
+    
+    // MARK: View lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "UITableView"
+        
+        var dc: PresentableManager = dataController
+        tableView.bind(withPresentableManager: &dc)
+    }
+
+}
+```
+
+And that's all folks!
+
+... well ...
+
+Or you could do a bit more ... here is a full spec data manager with all the functionality available
+
+```Swift
+import Foundation
+import Presentables
+
+
+class TableDataManager: PresentableTableViewDataManager {
+    
+    // MARK: Initialization
+    
+    override init() {
+        super.init()
+        
         // Create a section in your table view
         let section = PresentableSection()
         
@@ -105,33 +170,6 @@ class TableDataManager: PresentableTableViewDataManager {
 }
 ```
 
-And lastly, bind your table view to your data manager
-
-```Swift
-import UIKit
-import Presentables
-
-
-class ViewController: UITableViewController {
-
-	let dataController = TableDataManager()
-    
-    
-    // MARK: View lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        title = "UITableView"
-        
-        var dc: PresentableManager = dataController
-        tableView.bind(withPresentableManager: &dc)
-    }
-
-}
-```
-
-And that's all folks!
 
 ## Author
 
