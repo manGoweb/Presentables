@@ -65,7 +65,7 @@ class TableDataManager: PresentableTableViewDataManager {
 	let section = PresentableSection()
 	
         // Create a cell with custom tap event
-        let presentable = Presentable<TableViewCell1>.create({ (cell) in
+        let presentable = Presentable<MyTableViewCell>.create({ (cell) in
             cell.textLabel?.text = "First cell"
         }).cellSelected {
             print("First cell has been selected")
