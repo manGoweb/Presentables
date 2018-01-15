@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1541CA39200C349800CE03C3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AA41F422E570075ACE7 /* TableViewCell.swift */; };
 		156D7AFA1F431A150075ACE7 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AF91F431A150075ACE7 /* TableViewHeader.swift */; };
-		15A895541FD0A1BD00347281 /* TableDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A895531FD0A1BD00347281 /* TableDataController.swift */; };
+		159C16D5200C3DA0008BE539 /* TableDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159C16D4200C3DA0008BE539 /* TableDataManager.swift */; };
 		15CA94771FD0408F001AA1FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA94761FD0408F001AA1FE /* ViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* TableViewController.swift */; };
@@ -32,7 +32,7 @@
 /* Begin PBXFileReference section */
 		156D7AA41F422E570075ACE7 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		156D7AF91F431A150075ACE7 /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
-		15A895531FD0A1BD00347281 /* TableDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataController.swift; sourceTree = "<group>"; };
+		159C16D4200C3DA0008BE539 /* TableDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataManager.swift; sourceTree = "<group>"; };
 		15CA94761FD0408F001AA1FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		38060251E15DAF9BBFE2B96E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		465FC11CBD92471A8BAF9E8C /* Pods-Presentables_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presentables_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Presentables_Tests/Pods-Presentables_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		156D7AA01F422D460075ACE7 /* Data controllers */ = {
 			isa = PBXGroup;
 			children = (
-				15A895531FD0A1BD00347281 /* TableDataController.swift */,
+				159C16D4200C3DA0008BE539 /* TableDataManager.swift */,
 			);
 			name = "Data controllers";
 			sourceTree = "<group>";
@@ -408,8 +408,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				159C16D5200C3DA0008BE539 /* TableDataManager.swift in Sources */,
 				607FACD81AFB9204008FA782 /* TableViewController.swift in Sources */,
-				15A895541FD0A1BD00347281 /* TableDataController.swift in Sources */,
 				15CA94771FD0408F001AA1FE /* ViewController.swift in Sources */,
 				1541CA39200C349800CE03C3 /* TableViewCell.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

@@ -38,71 +38,70 @@ github "manGoweb/Presentables"
 ```
 ## Usage
 
-Create your cell (or header, implementation is pretty much the same)
+Create your cell like you would usually do
 
 ```Swift
 import UIKit
-import Presentables
 
+class MyTableViewCell: UITableViewCell { }
 
-class TableViewCell: UITableViewCell, Presentable {
-
-}
-
-class TableViewCellPresenter: Presenter {
-
-    var presentable: Presentable.Type = TableViewCell.self
-
-    var configure: ((Presentable) -> ())?
-
-}
 ```
 
 Create a data manager
 
 ```Swift
-class MyDataManagager: PresentableTableViewDataManager {
+import Foundation
+import Presentables
 
+
+class TableDataManager: PresentableTableViewDataManager {
+    
     // MARK: Initialization
-
+    
     override init() {
         super.init()
-
-        // Start a new section
+        
+        // Create a section in your table view
         let section = PresentableSection()
         
-        // Every section needs a header ... obviously
-        let header = TableViewHeaderPresenter()
-        header.configure = { presentable in
-            guard let header = presentable as? MyHeader else {
-                return
-            }
-            header.titleLabel.text = "My section"
+        // Add a header to it
+        let header = Presentable<TableViewHeader>.create { (header) in
+            header.titleLabel.text = "It works :)"
         }
-
         section.header = header
-
-        // Create some basic cells
-        for i: Int in 1...5 {
-            let presenter = TableViewCellPresenter()
-            presenter.configure = { presentable in
-                guard let cell = presentable as? TableViewCell else {
-                    return
-                }
-                cell.textLabel?.text = "Cell number: \(i)"
-            }
-            section.presenters.append(presenter)
+        
+        // Create a cell with custom tap event
+        let presentable = Presentable<TableViewCell1>.create({ (cell) in
+            cell.textLabel?.text = "First cell"
+        }).cellSelected {
+            print("First cell has been selected")
         }
-
-        // Add section to the data set
+        section.presentables.append(presentable)
+        
+        // And add loads more different cells
+        for i in 2...51 {
+            let presentable = Presentable<TableViewCell2>.create({ (cell) in
+                cell.textLabel?.text = "Id: \((i))"
+            })
+            section.presentables.append(presentable)
+        }
+        
+        // Now add your section to the data source
         data.append(section)
+        
+        // And finally create a global tap event for all cells
+        selectedCell = { info in
+            info.tableView.deselectRow(at: info.indexPath, animated: true)
+            print("Did select cell no. \((info.indexPath.row + 1))")
+        }
     }
-
-    // Override any delegate or datasource method you may want to
+    
+    // MARK: Overriding table view delegate (optional)
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
-
+    
 }
 ```
 
@@ -115,17 +114,17 @@ import Presentables
 
 class ViewController: UITableViewController {
 
-    let dataController = MyDataManagager()
-
-
+	let dataController = TableDataManager()
+    
+    
     // MARK: View lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Presentables!"
-
-        var dc: TableViewPresentableManager = dataController
+        
+        title = "UITableView"
+        
+        var dc: PresentableManager = dataController
         tableView.bind(withPresentableManager: &dc)
     }
 

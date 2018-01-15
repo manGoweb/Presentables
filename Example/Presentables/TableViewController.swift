@@ -12,7 +12,7 @@ import Presentables
 
 class TableViewController: UITableViewController {
     
-    let dataController = TableDataController()
+    let dataController = TableDataManager()
     
     
     // MARK: View lifecycle

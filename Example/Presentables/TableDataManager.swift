@@ -1,5 +1,5 @@
 //
-//  TableDataController.swift
+//  TableDataManager.swift
 //  Presentables_Example
 //
 //  Created by Ondrej Rafaj on 30/11/2017.
@@ -10,9 +10,7 @@ import Foundation
 import Presentables
 
 
-class TableDataController: PresentableTableViewDataManager {
-    
-    var timer: Timer!
+class TableDataManager: PresentableTableViewDataManager {
     
     // MARK: Initialization
     
@@ -52,12 +50,6 @@ class TableDataController: PresentableTableViewDataManager {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
-    }
-    
-    // MARK: Memory management
-    
-    deinit {
-        timer.invalidate()
     }
     
 }
