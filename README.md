@@ -61,6 +61,9 @@ class TableDataManager: PresentableTableViewDataManager {
     override init() {
         super.init()
         
+	// Create a section
+	let section = PresentableSection()
+	
         // Create a cell with custom tap event
         let presentable = Presentable<TableViewCell1>.create({ (cell) in
             cell.textLabel?.text = "First cell"
