@@ -24,8 +24,10 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         let tableButton = UIButton()
+        tableButton.backgroundColor = tableButton.tintColor
+        tableButton.layer.cornerRadius = 6
         tableButton.setTitle("Table view example", for: .normal)
-        tableButton.setTitleColor(.black, for: .normal)
+        tableButton.setTitleColor(.white, for: .normal)
         view.addSubview(tableButton)
         tableButton.addTarget(self, action: #selector(didTapTableButton), for: .touchUpInside)
         tableButton.snp.makeConstraints { (make) in
@@ -34,16 +36,6 @@ class ViewController: UIViewController {
             make.right.equalTo(-20)
             make.height.equalTo(44)
         }
-        
-        let collectionButton = UIButton()
-        collectionButton.setTitle("Collection view example", for: .normal)
-        collectionButton.setTitleColor(.black, for: .normal)
-        view.addSubview(collectionButton)
-        collectionButton.addTarget(self, action: #selector(didTapCollectionButton), for: .touchUpInside)
-        collectionButton.snp.makeConstraints { (make) in
-            make.top.equalTo(tableButton.snp.bottom).offset(20)
-            make.left.right.height.equalTo(tableButton)
-        }
     }
     
     // MARK: Actions
@@ -51,11 +43,6 @@ class ViewController: UIViewController {
     @objc func didTapTableButton() {
         let c = TableViewController()
         navigationController?.pushViewController(c, animated: true)
-    }
-    
-    @objc func didTapCollectionButton() {
-//        let c = CollectionViewController()
-//        navigationController?.pushViewController(c, animated: true)
     }
     
 }

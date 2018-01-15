@@ -9,14 +9,14 @@
 import Foundation
 
 
+public typealias PresentableType = AnyPresentable
 public typealias PresentableSections = [PresentableSection]
 
 
 public protocol PresentableSectionMarker {
-    // TODO: Replace any with headers and footers?
-    var header: Presentable<Reusable>? { get set }
-    var footer: Presentable<Reusable>? { get set }
-    var presentables: [Presentable<UITableViewCell>] { get set }
+    var header: PresentableType? { get set }
+    var footer: PresentableType? { get set }
+    var presentables: [PresentableType] { get set }
 }
 
 public typealias PresentableSectionMarkers = [PresentableSectionMarker]
@@ -27,12 +27,12 @@ public class PresentableSection: PresentableSectionMarker {
         case none
     }
     
-    var bindableHeader: Observable<Presentable<Reusable>?> = Observable(nil)
-    var bindableFooter: Observable<Presentable<Reusable>?> = Observable(nil)
-    var bindablePresenters: Observable<[Presentable<UITableViewCell>]?> = Observable(nil)
+    var bindableHeader: Observable<PresentableType?> = Observable(nil)
+    var bindableFooter: Observable<PresentableType?> = Observable(nil)
+    var bindablePresenters: Observable<[PresentableType]?> = Observable(nil)
     
     public var headerAnimation: Animation = .none
-    public var header: Presentable<Reusable>? {
+    public var header: PresentableType? {
         get {
             return bindableHeader.value
         }
@@ -40,9 +40,9 @@ public class PresentableSection: PresentableSectionMarker {
             bindableHeader.value = newValue
         }
     }
-    
+
     public var footerAnimation: Animation = .none
-    public var footer: Presentable<Reusable>? {
+    public var footer: PresentableType? {
         get {
             return bindableFooter.value
         }
@@ -52,7 +52,7 @@ public class PresentableSection: PresentableSectionMarker {
     }
     
     public var presenterAnimation: Animation = .none
-    public var presentables: [Presentable<UITableViewCell>] {
+    public var presentables: [PresentableType] {
         get {
             return bindablePresenters.value ?? []
         }

@@ -22,7 +22,7 @@ class TableViewHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = .lightGray
+        contentView.backgroundColor = .red
         
         contentView.addSubview(titleLabel)
         titleLabel.textColor = .white

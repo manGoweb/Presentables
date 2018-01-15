@@ -22,7 +22,7 @@ class TableViewController: UITableViewController {
         
         title = "UITableView"
         
-        var dc: TableViewPresentableManager = dataController
+        var dc: PresentableManager = dataController
         tableView.bind(withPresentableManager: &dc)
     }
 

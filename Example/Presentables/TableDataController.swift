@@ -19,11 +19,32 @@ class TableDataController: PresentableTableViewDataManager {
     override init() {
         super.init()
         
-        loadBasicData()
+        let section = PresentableSection()
         
-        // Add new section every couple of seconds
-        timer = Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { (timer) in
-            self.loadBasicData()
+        let header = Presentable<TableViewHeader>.create { (header) in
+            header.titleLabel.text = "It works :)"
+        }
+        section.header = header
+        
+        let presentable = Presentable<TableViewCell1>.create({ (cell) in
+            cell.textLabel?.text = "First cell"
+        }).cellSelected {
+            print("First cell has been selected")
+        }
+        section.presentables.append(presentable)
+        
+        for i in 2...51 {
+            let presentable = Presentable<TableViewCell2>.create({ (cell) in
+                cell.textLabel?.text = "Id: \((i))"
+            })
+            section.presentables.append(presentable)
+        }
+        
+        data.append(section)
+        
+        selectedCell = { info in
+            info.tableView.deselectRow(at: info.indexPath, animated: true)
+            print("Did select cell no. \((info.indexPath.row + 1))")
         }
     }
     
@@ -41,25 +62,3 @@ class TableDataController: PresentableTableViewDataManager {
     
 }
 
-// MARK: - Data
-
-extension TableDataController {
-    
-    fileprivate func loadBasicData() {
-        let section = PresentableSection()
-        
-//        section.header = newHeader((data.count + 1))
-        
-        // Add new cell every couple of seconds
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { (timer) in
-            let presentable = Presentable<UITableViewCell>.create({ (cell) in
-                cell.textLabel?.text = "Id: \((section.presentables.count + 1))"
-            })
-            section.presentables.append(presentable)
-        }
-        
-        // Add section to the data set
-        data.append(section)
-    }
-    
-}

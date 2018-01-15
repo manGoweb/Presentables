@@ -9,13 +9,13 @@
 import Foundation
 
 
-open class PresentableTableViewDataManager: NSObject, TableViewPresentableManager, UITableViewDataSource, UITableViewDelegate {
+open class PresentableTableViewDataManager: NSObject, PresentableManager, UITableViewDataSource, UITableViewDelegate {
     
     public var needsReloadData: (()->())?
     
-    public typealias PresentableTableViewDataManagerActionInfo = (presentable: Presentable<UITableViewCell>, indexPath: IndexPath, tableView: UITableView)
+    public typealias PresentableTableViewDataManagerActionInfo = (presentable: PresentableType, indexPath: IndexPath, tableView: UITableView)
     
-    open var didTapCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
+    open var selectedCell: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
     open var didTapAccessoryButton: ((_ info: PresentableTableViewDataManagerActionInfo)->())?
     
     public var bindableData: Observable<PresentableSections> = Observable([])
@@ -48,76 +48,53 @@ open class PresentableTableViewDataManager: NSObject, TableViewPresentableManage
         var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: identifier)
         if cell == nil {
             // TODO: Following needs to be made more type safe?
-            tableView.register(presentable.reusableType as! UITableViewCell.Type)
+            tableView.register(presentable.storedType, forCellReuseIdentifier: presentable.identifier)
             cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         }
-        presentable.configure?(cell!)
+        presentable.runConfigure(with: cell)
         return cell!
     }
     
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // TODO: Optimise reusable code!!!! Footer is almost the same
-        guard let presentable: Presentable = data.header(forSection: section) else {
+        guard let presentable: AnyPresentable = data.header(forSection: section) else {
             return nil
         }
-        
-        let identifier: String = presentable.identifier
-        var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
-        if view == nil {
-            // TODO: Following needs to be made more type safe?
-            tableView.register(presentable.reusableType as! UITableViewHeaderFooterView.Type)
-            view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
-            guard view != nil else {
-                return nil
-            }
-        }
-        guard let v = view else {
-            return nil
-        }
-        presentable.configure?(v)
-        
-        return v
+        return self.tableView(tableView, presentable: presentable)
     }
 
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        // TODO: Optimise reusable code!!!! Header is almost the same
-        guard let presentable: Presentable = data.footer(forSection: section) else {
+        guard let presentable: AnyPresentable = data.footer(forSection: section) else {
             return nil
         }
-        
+        return self.tableView(tableView, presentable: presentable)
+    }
+    
+    // MARK: Private helpers
+    
+    func tableView(_ tableView: UITableView, presentable: AnyPresentable) -> UIView? {
         let identifier: String = presentable.identifier
         var view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
         if view == nil {
-            // TODO: Following needs to be made more type safe?
-            tableView.register(presentable.reusableType as! UITableViewHeaderFooterView.Type)
+            tableView.register(presentable.storedType, forHeaderFooterViewReuseIdentifier: presentable.identifier)
             view = tableView.dequeueReusableHeaderFooterView(withIdentifier: identifier)
             guard view != nil else {
                 return nil
             }
         }
-        guard let v = view else {
-            return nil
-        }
-        presentable.configure?(v)
-        
-        return v
+        presentable.runConfigure(with: view)
+        return view
     }
-
+    
     // MARK: Delegate
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let presentable: Presentable = data.presentable(forIndexPath: indexPath) {
-//            presentable.didSelectCell?()
-//            didTapCell?((presentable: presentable, indexPath: indexPath, tableView: tableView))
-//        }
-//        else {
-            let presentable: Presentable = data.presentable(forIndexPath: indexPath)
-            didTapCell?((presentable: presentable, indexPath: indexPath, tableView: tableView))
-//        }
+        let presentable: AnyPresentable = data.presentable(forIndexPath: indexPath)
+        presentable.selected?()
+        selectedCell?((presentable: presentable, indexPath: indexPath, tableView: tableView))
     }
 
     open func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let presentable: Presentable = data.presentable(forIndexPath: indexPath)
+        let presentable: AnyPresentable = data.presentable(forIndexPath: indexPath)
         didTapAccessoryButton?((presentable: presentable, indexPath: indexPath, tableView: tableView))
     }
     

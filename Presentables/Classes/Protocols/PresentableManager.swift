@@ -9,9 +9,6 @@
 import Foundation
 
 
-public protocol TableViewPresentableManager: PresentableManager { }
-public protocol CollectionViewPresentableManager: PresentableManager { }
-
 public protocol PresentableManager {
     
     var bindableData: Observable<PresentableSections> { get }

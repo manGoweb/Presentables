@@ -26,7 +26,7 @@ extension UITableView: PresentableCollectionElement {
         }
     }
     
-    public func bind(withPresentableManager manager: inout TableViewPresentableManager) {
+    public func bind(withPresentableManager manager: inout PresentableManager) {
         let m = manager
         manager.bindableData.bind(listener: { (data) in
             for section: PresentableSection in m.data {

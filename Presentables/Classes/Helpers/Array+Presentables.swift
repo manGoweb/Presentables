@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Section generators
 
-public extension Array where Element == Presentable<UITableViewCell> {
+public extension Array where Element == PresentableType {
     
     public var section: PresentableSection {
         get {
@@ -27,7 +27,7 @@ public extension Array where Element == Presentable<UITableViewCell> {
 
 public extension Array where Element: PresentableSectionMarker {
     
-    func presentable(forIndexPath indexPath: IndexPath) -> Presentable<UITableViewCell> {
+    func presentable(forIndexPath indexPath: IndexPath) -> PresentableType {
         let sections: PresentableSections = sectionsOrError()
         return sections[indexPath.section].presentables[indexPath.row]
     }
@@ -37,20 +37,20 @@ public extension Array where Element: PresentableSectionMarker {
         return sections[indexPath.section]
     }
     
-    func header(forIndexPath indexPath: IndexPath) -> Presentable<Reusable>? {
+    func header(forIndexPath indexPath: IndexPath) -> PresentableType? {
         return header(forSection: indexPath.section)
     }
     
-    func footer(forIndexPath indexPath: IndexPath) -> Presentable<Reusable>? {
+    func footer(forIndexPath indexPath: IndexPath) -> PresentableType? {
         return footer(forSection: indexPath.section)
     }
     
-    func header(forSection section: Int) -> Presentable<Reusable>? {
+    func header(forSection section: Int) -> PresentableType? {
         let sections: PresentableSections = sectionsOrError()
         return sections[section].header
     }
-    
-    func footer(forSection section: Int) -> Presentable<Reusable>? {
+
+    func footer(forSection section: Int) -> PresentableType? {
         let sections: PresentableSections = sectionsOrError()
         return sections[section].footer
     }

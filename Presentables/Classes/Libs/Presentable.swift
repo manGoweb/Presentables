@@ -10,10 +10,20 @@ import Foundation
 import UIKit
 
 
-open class Presentable<T> {
+public protocol AnyPresentable {
+    
+    var identifier: String { get }
+    var storedType: AnyClass { get }
+    var selected: (() -> Void)? { get set }
+    
+    func runConfigure(with: UIView?)
+    
+}
+
+
+open class Presentable<T>: AnyPresentable {
     
     public typealias ConfigureClosure = (T) -> Void
-    public typealias SelectedClosure = () -> Void
     
     public typealias PresentableItem = T
     public var configure: ConfigureClosure?
@@ -26,8 +36,12 @@ open class Presentable<T> {
         return T.self
     }
     
-    var selected: SelectedClosure?
-    @discardableResult public func cellSelected(_ selected: @escaping SelectedClosure) -> Self {
+    public var storedType: AnyClass {
+        return T.self as! AnyClass
+    }
+    
+    public var selected: (() -> Void)?
+    @discardableResult public func cellSelected(_ selected: @escaping () -> Void) -> Self {
         self.selected = selected
         return self
     }
@@ -36,6 +50,13 @@ open class Presentable<T> {
         let presentable = Presentable<T>()
         presentable.configure = configure
         return presentable
+    }
+    
+    public func runConfigure(with view: UIView?) {
+        guard let view: T = view as? T else {
+            return
+        }
+        configure?(view)
     }
     
 }
