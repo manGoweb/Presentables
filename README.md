@@ -94,7 +94,7 @@ import Presentables
 
 class ViewController: UITableViewController {
 
-	let manager = TableDataManager()
+    let manager = TableDataManager()
     
     
     // MARK: View lifecycle
