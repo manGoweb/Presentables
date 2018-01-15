@@ -94,7 +94,7 @@ import Presentables
 
 class ViewController: UITableViewController {
 
-	let dataController = TableDataManager()
+	let manager = TableDataManager()
     
     
     // MARK: View lifecycle
@@ -104,7 +104,7 @@ class ViewController: UITableViewController {
         
         title = "UITableView"
         
-        var dc: PresentableManager = dataController
+        var dc: PresentableManager = manager
         tableView.bind(withPresentableManager: &dc)
     }
 
