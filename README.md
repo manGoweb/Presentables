@@ -102,8 +102,6 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "UITableView"
-        
         var dc: PresentableManager = manager
         tableView.bind(withPresentableManager: &dc)
     }
