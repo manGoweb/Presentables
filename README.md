@@ -94,7 +94,7 @@ import Presentables
 
 class ViewController: UITableViewController {
 
-    let manager = TableDataManager()
+    var manager: PresentableManager = TableDataManager()
     
     
     // MARK: View lifecycle
@@ -102,8 +102,7 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var dc: PresentableManager = manager
-        tableView.bind(withPresentableManager: &dc)
+        tableView.bind(withPresentableManager: &manager)
     }
 
 }
