@@ -67,19 +67,11 @@ class TableDataManager: PresentableTableViewDataManager {
         // Create a cell with custom tap event
         let presentable = Presentable<MyTableViewCell>.create({ (cell) in
             cell.textLabel?.text = "First cell"
-        }).cellSelected {
-            print("First cell has been selected")
-        }
+        })
         section.presentables.append(presentable)
         
         // Now add your section to the data source
         data.append(section)
-    }
-    
-    // MARK: Overriding table view delegate (optional)
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
     }
     
 }
