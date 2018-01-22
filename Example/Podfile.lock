@@ -1,13 +1,9 @@
 PODS:
-  - Nimble (7.0.2)
-  - Presentables (0.4.4)
-  - Quick (1.2.0)
+  - Presentables (0.5.1)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
-  - Nimble
   - Presentables (from `../`)
-  - Quick
   - SnapKit
 
 EXTERNAL SOURCES:
@@ -15,11 +11,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
-  Presentables: 7e606f02904d58d717b1ec8ea58c426140a33da0
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Presentables: 225fe45f80ef41fc3ddcdd34bd8569362b3c04c1
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 969ddfd8ef955cacd5b0a59c7fe3de82c5ad4bb8
+PODFILE CHECKSUM: e6cbbad1a8e5724611ebedff0c6f0f32e1db04f4
 
 COCOAPODS: 1.4.0.beta.2

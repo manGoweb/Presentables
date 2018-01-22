@@ -21,23 +21,23 @@ public protocol AnyPresentable {
 }
 
 
-open class Presentable<T>: AnyPresentable {
+open class Presentable<PresentableType>: AnyPresentable {
     
-    public typealias ConfigureClosure = (T) -> Void
+    public typealias ConfigureClosure = (PresentableType) -> Void
     
-    public typealias PresentableItem = T
+    public typealias PresentableItem = PresentableType
     public var configure: ConfigureClosure?
     
     open var identifier: String {
-        return String(describing: T.self)
+        return String(describing: PresentableType.self)
     }
     
-    public var reusableType: T.Type {
-        return T.self
+    public var reusableType: PresentableType.Type {
+        return PresentableType.self
     }
     
     public var storedType: AnyClass {
-        return T.self as! AnyClass
+        return PresentableType.self as! AnyClass
     }
     
     public var selected: (() -> Void)?
@@ -46,14 +46,14 @@ open class Presentable<T>: AnyPresentable {
         return self
     }
     
-    public static func create(_ configure: ConfigureClosure? = nil) -> Presentable<T> {
-        let presentable = Presentable<T>()
+    public static func create(_ configure: ConfigureClosure? = nil) -> Presentable<PresentableType> {
+        let presentable = Presentable<PresentableType>()
         presentable.configure = configure
         return presentable
     }
     
     public func runConfigure(with view: UIView?) {
-        guard let view: T = view as? T else {
+        guard let view: PresentableType = view as? PresentableType else {
             return
         }
         configure?(view)
