@@ -1,5 +1,5 @@
 PODS:
-  - Presentables (0.5.1)
+  - Presentables (0.5.2)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
@@ -11,9 +11,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Presentables: 225fe45f80ef41fc3ddcdd34bd8569362b3c04c1
+  Presentables: 4ff89a84cb8b864692acba558d2a12b0d1965c39
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: e6cbbad1a8e5724611ebedff0c6f0f32e1db04f4
+PODFILE CHECKSUM: 2ed700da210b9cfa9572fa31f00e5d882e7ff04b
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.4.0
