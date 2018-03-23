@@ -34,7 +34,7 @@ class TableViewCell1: TableViewCell {
     override func configure() {
         super.configure()
         
-        contentView.backgroundColor = UIColor.blue.withAlphaComponent(0.05)
+        contentView.backgroundColor = UIColor.blue
     }
     
 }

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		02466391E267EFBAB77AF97B608DF797 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */; };
 		09A7A571569D73B00E76498343F012EF /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */; };
+		158B4B222064121300FCE847 /* Presentables+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B4B212064121300FCE847 /* Presentables+UICollectionView.swift */; };
+		158B4B242064132E00FCE847 /* PresentableCollectionViewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B4B232064132E00FCE847 /* PresentableCollectionViewDataManager.swift */; };
+		158B4BA32064237700FCE847 /* UICollectionView+Presentables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B4BA22064237700FCE847 /* UICollectionView+Presentables.swift */; };
 		19ADE145A55408E4C4E426E6BED52D06 /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645061FD8BF394AC613CF4F0D51EEE0B /* ConstraintDSL.swift */; };
 		1F7453772F9613411F73C39DF489CFFD /* ConstraintMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1FE61DC3251BBA5CD452BE8564C8E7 /* ConstraintMaker.swift */; };
 		244F0C81DE8A6E52F492636B9065CC5E /* ConstraintRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA17F2D7F42352672F30A144E51AC809 /* ConstraintRelation.swift */; };
@@ -89,6 +92,9 @@
 		11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
 		1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
+		158B4B212064121300FCE847 /* Presentables+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presentables+UICollectionView.swift"; sourceTree = "<group>"; };
+		158B4B232064132E00FCE847 /* PresentableCollectionViewDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableCollectionViewDataManager.swift; sourceTree = "<group>"; };
+		158B4BA22064237700FCE847 /* UICollectionView+Presentables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Presentables.swift"; sourceTree = "<group>"; };
 		166EF6890A45724F69C017F8F6E28621 /* Pods-Presentables_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Presentables_Tests-resources.sh"; sourceTree = "<group>"; };
 		1C3A931CDC4FB0563592274ED61655C7 /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
 		2057A81225328642D0E49115C61C8897 /* SnapKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SnapKit.modulemap; sourceTree = "<group>"; };
@@ -237,6 +243,17 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		158B4B202064118B00FCE847 /* Collection views */ = {
+			isa = PBXGroup;
+			children = (
+				158B4B212064121300FCE847 /* Presentables+UICollectionView.swift */,
+				158B4B232064132E00FCE847 /* PresentableCollectionViewDataManager.swift */,
+				158B4BA22064237700FCE847 /* UICollectionView+Presentables.swift */,
+			);
+			name = "Collection views";
+			path = "Presentables/Classes/Collection views";
+			sourceTree = "<group>";
+		};
 		432313F4618A6E0D54282078B6A48A1B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +315,7 @@
 				EDE4BC5DA485EC2C0538903F2F003526 /* Pod */,
 				45111329EB22ABE68DAA6F3AE4273C76 /* Protocols */,
 				7CCAA2B85F7721EF2E55D1FAFF8F7254 /* Support Files */,
+				158B4B202064118B00FCE847 /* Collection views */,
 				E346434139AD98049F4646187C954E35 /* Table views */,
 			);
 			name = Presentables;
@@ -580,10 +598,13 @@
 			files = (
 				62B85BC3E80EF988C41B2F19F838A120 /* Array+Presentables.swift in Sources */,
 				2A37AB74222193112A9B1AEB4F4FED28 /* Observable.swift in Sources */,
+				158B4B242064132E00FCE847 /* PresentableCollectionViewDataManager.swift in Sources */,
 				FDF2624C96CAE760A0C41FE69A99EFB4 /* Presentable.swift in Sources */,
 				844DDE9F3E460396132D727B23E4EAF1 /* PresentableCollectionElement.swift in Sources */,
 				39C2F2486D40ADE6FAF93249BD3225C6 /* PresentableManager.swift in Sources */,
+				158B4BA32064237700FCE847 /* UICollectionView+Presentables.swift in Sources */,
 				C6D2880136EA1495A5B5079796714DDC /* Presentables+UITableView.swift in Sources */,
+				158B4B222064121300FCE847 /* Presentables+UICollectionView.swift in Sources */,
 				2F504777485C2FE81A4D0554A32415A8 /* Presentables-dummy.m in Sources */,
 				43D22F56138A4DAB8C9CB70622C801A1 /* PresentableSection.swift in Sources */,
 				90177C78BB981FBB99CB988854A24D99 /* PresentableTableViewDataManager.swift in Sources */,

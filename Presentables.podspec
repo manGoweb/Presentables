@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
     s.name             = 'Presentables'
-    s.version          = '0.5.2'
-    s.summary          = 'Simple reactive library for managing table views, written in Swift'
+    s.version          = '0.6.0_alpha_1'
+    s.summary          = 'Simple reactive library for managing table views & collection views, written in Swift'
 
     # This description is used to generate tags and improve search results.
     #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
     #   * Write the description between the DESC delimiters below.
     #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-    s.description      = "Simplify the way you use table views in your app. This library is not supposed to be competing with RxSwift at all, this is only for developers who want a quick way to simplify their screens."
+    s.description      = "Simplify the way you use table views & collection views in your app. This library is not supposed to be competing with RxSwift at all, this is only for developers who want a quick way to simplify their screens."
 
     s.homepage         = 'https://github.com/manGoweb/Presentables'
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'

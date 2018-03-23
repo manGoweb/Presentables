@@ -36,12 +36,29 @@ class ViewController: UIViewController {
             make.right.equalTo(-20)
             make.height.equalTo(44)
         }
+        
+        let collectionButton = UIButton()
+        collectionButton.backgroundColor = collectionButton.tintColor
+        collectionButton.layer.cornerRadius = 6
+        collectionButton.setTitle("Collection view example", for: .normal)
+        collectionButton.setTitleColor(.white, for: .normal)
+        view.addSubview(collectionButton)
+        collectionButton.addTarget(self, action: #selector(didTapCollectionButton), for: .touchUpInside)
+        collectionButton.snp.makeConstraints { (make) in
+            make.top.equalTo(tableButton.snp.bottom).offset(20)
+            make.left.right.height.equalTo(tableButton)
+        }
     }
     
     // MARK: Actions
     
     @objc func didTapTableButton() {
         let c = TableViewController()
+        navigationController?.pushViewController(c, animated: true)
+    }
+    
+    @objc func didTapCollectionButton() {
+        let c = CollectionViewController()
         navigationController?.pushViewController(c, animated: true)
     }
     

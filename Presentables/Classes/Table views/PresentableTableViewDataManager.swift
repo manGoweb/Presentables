@@ -24,12 +24,9 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
             return bindableData.value
         }
         set {
-            
             bindableData.value = newValue
         }
     }
-    
-    public var tableView: UITableView?
     
     // MARK: Data source
     
