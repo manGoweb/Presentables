@@ -10,6 +10,8 @@
 
 So what is Presentables really? It is a really small library that should help you develop apps with table views a little bit faster than you would using the conventional methods. It also introduces binding of your data to the table views so any time you change your dataset, the table will update accordingly.
 
+> Checkout our examples for **UICollectionView** support!
+
 ## Slack
 
 Get help using and installing this product on our [Slack](http://bit.ly/2B0dEyt), channel <b>#help-presentables</b>
