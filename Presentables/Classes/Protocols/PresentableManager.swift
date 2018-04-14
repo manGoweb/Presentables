@@ -16,4 +16,8 @@ public protocol PresentableManager {
     
     var needsReloadData: (()->())? { get set }
     
+    func reloadData()
+    func reload(section: Int)
+    func reload(indexPath: IndexPath)
+    
 }

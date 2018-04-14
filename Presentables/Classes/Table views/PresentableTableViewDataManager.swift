@@ -28,6 +28,22 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
         }
     }
     
+    var tableView: UITableView?
+    
+    // MARK: Actions
+    
+    public func reloadData() {
+        tableView?.reloadData()
+    }
+    
+    public func reload(section: Int) {
+        tableView?.reloadSections([section], with: .none)
+    }
+    
+    public func reload(indexPath: IndexPath) {
+        tableView?.reloadRows(at: [indexPath], with: .none)
+    }
+    
     // MARK: Data source
     
     open func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,12 +74,20 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
         }
         return self.tableView(tableView, presentable: presentable)
     }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return data[section].header == nil ? 0 : UITableViewAutomaticDimension
+    }
 
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard let presentable: AnyPresentable = data.footer(forSection: section) else {
             return nil
         }
         return self.tableView(tableView, presentable: presentable)
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return data[section].footer == nil ? 0 : UITableViewAutomaticDimension
     }
     
     // MARK: Private helpers

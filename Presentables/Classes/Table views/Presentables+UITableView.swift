@@ -43,6 +43,10 @@ extension UITableView: PresentableCollectionElement {
         
         dataSource = manager as? UITableViewDataSource
         delegate = manager as? UITableViewDelegate
+        
+        if let manager = manager as? PresentableTableViewDataManager {
+            manager.tableView = self
+        }
     }
     
     func register(presentableSections sections: inout PresentableSections) {

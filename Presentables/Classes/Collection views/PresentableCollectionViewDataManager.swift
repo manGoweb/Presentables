@@ -28,6 +28,22 @@ open class PresentableCollectionViewDataManager: NSObject, PresentableManager, U
         }
     }
     
+    var collectionView: UICollectionView?
+    
+    // MARK: Actions
+    
+    public func reloadData() {
+        collectionView?.reloadData()
+    }
+    
+    public func reload(section: Int) {
+        collectionView?.reloadSections([section])
+    }
+    
+    public func reload(indexPath: IndexPath) {
+        collectionView?.reloadItems(at: [indexPath])
+    }
+    
     // MARK: Data source
     
     open func numberOfSections(in collectionView: UICollectionView) -> Int {

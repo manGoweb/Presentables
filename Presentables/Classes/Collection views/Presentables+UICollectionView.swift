@@ -42,6 +42,10 @@ extension UICollectionView: PresentableCollectionElement {
         
         dataSource = manager as? UICollectionViewDataSource
         delegate = manager as? UICollectionViewDelegate
+        
+        if let manager = manager as? PresentableCollectionViewDataManager {
+            manager.collectionView = self
+        }
     }
     
     func register(presentableSections sections: inout PresentableSections) {
