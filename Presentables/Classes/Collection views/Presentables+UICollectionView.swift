@@ -21,6 +21,7 @@ extension UICollectionView: PresentableCollectionElement {
     
     func safeReloadData() {
         DispatchQueue.main.async {
+            self.collectionViewLayout.invalidateLayout()
             self.reloadData()
         }
     }

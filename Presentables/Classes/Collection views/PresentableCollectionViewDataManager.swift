@@ -10,6 +10,7 @@ import Foundation
 
 open class PresentableCollectionViewDataManager: NSObject, PresentableManager, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // TODO: Can we remove this?
     public var needsReloadData: (()->())?
     public var sizeForHeaderInSection: ((_ section: Int)->(CGSize))?
     public var sizeForFooterInSection: ((_ section: Int)->(CGSize))?
@@ -33,6 +34,7 @@ open class PresentableCollectionViewDataManager: NSObject, PresentableManager, U
     // MARK: Actions
     
     public func reloadData() {
+        collectionView?.collectionViewLayout.invalidateLayout()
         collectionView?.reloadData()
     }
     
@@ -68,6 +70,7 @@ open class PresentableCollectionViewDataManager: NSObject, PresentableManager, U
                 fatalError()
             }
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: presentable.identifier, for: indexPath)
+            presentable.runConfigure(with: view)
             return view
         }
         else {
@@ -75,24 +78,10 @@ open class PresentableCollectionViewDataManager: NSObject, PresentableManager, U
                 fatalError()
             }
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: presentable.identifier, for: indexPath)
+            presentable.runConfigure(with: view)
             return view
         }
     }
-    
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        guard let _ = data.header(forSection: section) else {
-            return CGSize.zero
-        }
-        return sizeForHeaderInSection?(section) ?? CGSize(width: collectionView.frame.width, height: 44)
-    }
-
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        guard let _ = data.footer(forSection: section) else {
-            return CGSize.zero
-        }
-        return sizeForFooterInSection?(section) ?? CGSize(width: collectionView.frame.width, height: 44)
-    }
-    
     
     // MARK: Delegate
     
@@ -102,4 +91,23 @@ open class PresentableCollectionViewDataManager: NSObject, PresentableManager, U
         selectedItem?((presentable: presentable, indexPath: indexPath, collectionView: collectionView))
     }
     
+}
+
+
+extension PresentableCollectionViewDataManager: UICollectionViewDelegateFlowLayout {
+    
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        guard let _ = data.header(forSection: section) else {
+            return CGSize.zero
+        }
+        return sizeForHeaderInSection?(section) ?? CGSize(width: collectionView.frame.width, height: 44)
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        guard let _ = data.footer(forSection: section) else {
+            return CGSize.zero
+        }
+        return sizeForFooterInSection?(section) ?? CGSize(width: collectionView.frame.width, height: 44)
+    }
+
 }
