@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		02466391E267EFBAB77AF97B608DF797 /* LayoutConstraintItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B953D578152B8ABC94EDF5E0C6A43 /* LayoutConstraintItem.swift */; };
 		09A7A571569D73B00E76498343F012EF /* ConstraintOffsetTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3463E11A1205B5C35B599F4A19C31C3 /* ConstraintOffsetTarget.swift */; };
+		15680132209114E300FA296A /* PresentableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15680131209114E300FA296A /* PresentableTableViewController.swift */; };
+		1568013620911AEF00FA296A /* PresentableTableViewManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1568013520911AEF00FA296A /* PresentableTableViewManageable.swift */; };
 		158B4B222064121300FCE847 /* Presentables+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B4B212064121300FCE847 /* Presentables+UICollectionView.swift */; };
 		158B4B242064132E00FCE847 /* PresentableCollectionViewDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B4B232064132E00FCE847 /* PresentableCollectionViewDataManager.swift */; };
 		158B4BA32064237700FCE847 /* UICollectionView+Presentables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B4BA22064237700FCE847 /* UICollectionView+Presentables.swift */; };
@@ -92,6 +94,8 @@
 		11084A6BA20780B0A92EE054D45AD2B7 /* SnapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.xcconfig; sourceTree = "<group>"; };
 		1130FD3420568BD4A44BC6359400E0A8 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		155B0F68F55650AB9DA3EB802B75CFE0 /* ConstraintConstantTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintConstantTarget.swift; path = Source/ConstraintConstantTarget.swift; sourceTree = "<group>"; };
+		15680131209114E300FA296A /* PresentableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableTableViewController.swift; sourceTree = "<group>"; };
+		1568013520911AEF00FA296A /* PresentableTableViewManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableTableViewManageable.swift; sourceTree = "<group>"; };
 		158B4B212064121300FCE847 /* Presentables+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Presentables+UICollectionView.swift"; sourceTree = "<group>"; };
 		158B4B232064132E00FCE847 /* PresentableCollectionViewDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentableCollectionViewDataManager.swift; sourceTree = "<group>"; };
 		158B4BA22064237700FCE847 /* UICollectionView+Presentables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Presentables.swift"; sourceTree = "<group>"; };
@@ -439,6 +443,8 @@
 			children = (
 				4C88747E9AF45F13B520ECC23A99E293 /* Presentables+UITableView.swift */,
 				433770D1D10E6F6ED8387BF7116E6F5A /* PresentableTableViewDataManager.swift */,
+				15680131209114E300FA296A /* PresentableTableViewController.swift */,
+				1568013520911AEF00FA296A /* PresentableTableViewManageable.swift */,
 			);
 			name = "Table views";
 			path = "Presentables/Classes/Table views";
@@ -608,6 +614,8 @@
 				2F504777485C2FE81A4D0554A32415A8 /* Presentables-dummy.m in Sources */,
 				43D22F56138A4DAB8C9CB70622C801A1 /* PresentableSection.swift in Sources */,
 				90177C78BB981FBB99CB988854A24D99 /* PresentableTableViewDataManager.swift in Sources */,
+				1568013620911AEF00FA296A /* PresentableTableViewManageable.swift in Sources */,
+				15680132209114E300FA296A /* PresentableTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

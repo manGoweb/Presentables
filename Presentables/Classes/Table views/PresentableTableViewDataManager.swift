@@ -32,15 +32,15 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
     
     // MARK: Actions
     
-    public func reloadData() {
+    open func reloadData() {
         tableView?.reloadData()
     }
     
-    public func reload(section: Int) {
+    open func reload(section: Int) {
         tableView?.reloadSections([section], with: .none)
     }
     
-    public func reload(indexPath: IndexPath) {
+    open func reload(indexPath: IndexPath) {
         tableView?.reloadRows(at: [indexPath], with: .none)
     }
     
@@ -68,28 +68,6 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
         return cell!
     }
     
-    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let presentable: AnyPresentable = data.header(forSection: section) else {
-            return nil
-        }
-        return self.tableView(tableView, presentable: presentable)
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return data[section].header == nil ? 0 : UITableViewAutomaticDimension
-    }
-
-    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let presentable: AnyPresentable = data.footer(forSection: section) else {
-            return nil
-        }
-        return self.tableView(tableView, presentable: presentable)
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return data[section].footer == nil ? 0 : UITableViewAutomaticDimension
-    }
-    
     // MARK: Private helpers
     
     func tableView(_ tableView: UITableView, presentable: AnyPresentable) -> UIView? {
@@ -107,6 +85,28 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
     }
     
     // MARK: Delegate
+    
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let presentable: AnyPresentable = data.header(forSection: section) else {
+            return nil
+        }
+        return self.tableView(tableView, presentable: presentable)
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return data[section].header == nil ? 0 : UITableViewAutomaticDimension
+    }
+    
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let presentable: AnyPresentable = data.footer(forSection: section) else {
+            return nil
+        }
+        return self.tableView(tableView, presentable: presentable)
+    }
+    
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return data[section].footer == nil ? 0 : UITableViewAutomaticDimension
+    }
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let presentable: AnyPresentable = data.presentable(forIndexPath: indexPath)

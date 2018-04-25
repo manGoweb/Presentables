@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1541CA39200C349800CE03C3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AA41F422E570075ACE7 /* TableViewCell.swift */; };
+		156801342091176500FA296A /* ManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156801332091176500FA296A /* ManagerTableViewController.swift */; };
 		156D7AFA1F431A150075ACE7 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D7AF91F431A150075ACE7 /* TableViewHeader.swift */; };
 		158B4B1D206410E300FCE847 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B4B1C206410E300FCE847 /* CollectionViewController.swift */; };
 		158B4B1F2064111500FCE847 /* CollectionDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158B4B1E2064111500FCE847 /* CollectionDataManager.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		156801332091176500FA296A /* ManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTableViewController.swift; sourceTree = "<group>"; };
 		156D7AA41F422E570075ACE7 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		156D7AF91F431A150075ACE7 /* TableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		158B4B1C206410E300FCE847 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				158B4B1C206410E300FCE847 /* CollectionViewController.swift */,
 				607FACD71AFB9204008FA782 /* TableViewController.swift */,
+				156801332091176500FA296A /* ManagerTableViewController.swift */,
 				15CA94761FD0408F001AA1FE /* ViewController.swift */,
 			);
 			name = "View controllers";
@@ -418,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				159C16D5200C3DA0008BE539 /* TableDataManager.swift in Sources */,
+				156801342091176500FA296A /* ManagerTableViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* TableViewController.swift in Sources */,
 				158B4B2620641A4800FCE847 /* CollectionViewCell.swift in Sources */,
 				15CA94771FD0408F001AA1FE /* ViewController.swift in Sources */,

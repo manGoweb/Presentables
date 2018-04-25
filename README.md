@@ -49,6 +49,8 @@ class MyTableViewCell: UITableViewCell { }
 
 ```
 
+### Using data manager
+
 Create a data manager
 
 ```Swift
@@ -102,11 +104,7 @@ class ViewController: UITableViewController {
 }
 ```
 
-And that's all folks!
-
-... well ...
-
-Or you could do a bit more ... here is a full spec data manager with all the functionality available
+or you could do a bit more ... here is a full spec data manager with all the functionality available
 
 ```Swift
 import Foundation
@@ -159,6 +157,67 @@ class TableDataManager: PresentableTableViewDataManager {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
+    }
+    
+}
+```
+
+### Using designated view controller
+
+If you are not into creating separate manager classes, you can use our pre-set view controller directly like this:
+
+```swift
+class ManagerTableViewController: PresentableTableViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Create a section
+        let section = PresentableSection()
+        
+        // Build a header
+        let header = Presentable<TableViewHeader>.create { (header) in
+            header.titleLabel.text = "It works yet again!"
+        }
+        section.header = header
+        
+        // Add a cell!
+        let presentable = Presentable<TableViewCell2>.create({ (cell) in
+            cell.textLabel?.text = "Custom cell"
+        })
+        section.presentables.append(presentable)
+        
+        data.append(section)
+    }
+    
+}
+```
+
+I don't think it can get simpler than that ...
+
+In case you'd like to implement your own version of a `ManagerTableViewController` (or any other class or view on that matter), you could use `PresentableTableViewManageable` like this:
+
+```swift
+open class MyTableViewController: UIViewController, PresentableTableViewManageable {
+    
+    public var tableView = UITableView(frame: CGRect.zero, style: .plain)
+    
+    public let presentableManager = PresentableTableViewDataManager()
+    
+    public var data: PresentableSections {
+        get { return presentableManager.data }
+        set { presentableManager.data = newValue }
+    }
+    
+    // MARK: View lifecycle
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { ... }
+        
+        bind()
     }
     
 }

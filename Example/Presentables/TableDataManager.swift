@@ -48,7 +48,7 @@ class TableDataManager: PresentableTableViewDataManager {
     
     // MARK: Overriding table view delegate (optional)
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
     

@@ -37,6 +37,18 @@ class ViewController: UIViewController {
             make.height.equalTo(44)
         }
         
+        let tableButton2 = UIButton()
+        tableButton2.backgroundColor = tableButton2.tintColor
+        tableButton2.layer.cornerRadius = 6
+        tableButton2.setTitle("Table view example 2", for: .normal)
+        tableButton2.setTitleColor(.white, for: .normal)
+        view.addSubview(tableButton2)
+        tableButton2.addTarget(self, action: #selector(didTapTable2Button), for: .touchUpInside)
+        tableButton2.snp.makeConstraints { (make) in
+            make.top.equalTo(tableButton.snp.bottom).offset(20)
+            make.left.right.height.equalTo(tableButton)
+        }
+        
         let collectionButton = UIButton()
         collectionButton.backgroundColor = collectionButton.tintColor
         collectionButton.layer.cornerRadius = 6
@@ -45,8 +57,8 @@ class ViewController: UIViewController {
         view.addSubview(collectionButton)
         collectionButton.addTarget(self, action: #selector(didTapCollectionButton), for: .touchUpInside)
         collectionButton.snp.makeConstraints { (make) in
-            make.top.equalTo(tableButton.snp.bottom).offset(20)
-            make.left.right.height.equalTo(tableButton)
+            make.top.equalTo(tableButton2.snp.bottom).offset(20)
+            make.left.right.height.equalTo(tableButton2)
         }
     }
     
@@ -54,6 +66,11 @@ class ViewController: UIViewController {
     
     @objc func didTapTableButton() {
         let c = TableViewController()
+        navigationController?.pushViewController(c, animated: true)
+    }
+    
+    @objc func didTapTable2Button() {
+        let c = ManagerTableViewController()
         navigationController?.pushViewController(c, animated: true)
     }
     
