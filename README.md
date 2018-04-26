@@ -49,6 +49,10 @@ class MyTableViewCell: UITableViewCell { }
 
 ```
 
+There are two ways to use presentables
+- [In a data manager](#using-data-manager)
+- [In a view controller (or any other class) directly](#using-designated-view-controller)
+
 ### Using data manager
 
 Create a data manager
