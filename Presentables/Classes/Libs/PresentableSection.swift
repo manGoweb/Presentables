@@ -114,6 +114,10 @@ public class PresentableSection: PresentableSectionMarker, Collection {
         _presentables.append(contentsOf: presentables)
     }
     
+    public func set(_ presentables: [PresentableType]) {
+        _presentables = presentables
+    }
+    
     public func removeAll() {
         _presentables.removeAll()
     }

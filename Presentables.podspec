@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'Presentables'
-    s.version          = '0.6.5'
+    s.version          = '0.6.6'
     s.summary          = 'Simple reactive library for managing table views & collection views, written in Swift'
 
     # This description is used to generate tags and improve search results.
