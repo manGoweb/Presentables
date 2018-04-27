@@ -29,20 +29,20 @@ open class PresentableCollectionViewDataManager: NSObject, PresentableManager, U
         }
     }
     
-    var collectionView: UICollectionView?
+    public var collectionView: UICollectionView?
     
     // MARK: Actions
     
-    public func reloadData() {
+    open func reloadData() {
         collectionView?.collectionViewLayout.invalidateLayout()
         collectionView?.reloadData()
     }
     
-    public func reload(section: Int) {
+    open func reload(section: Int) {
         collectionView?.reloadSections([section])
     }
     
-    public func reload(indexPath: IndexPath) {
+    open func reload(indexPath: IndexPath) {
         collectionView?.reloadItems(at: [indexPath])
     }
     

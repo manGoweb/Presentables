@@ -28,7 +28,7 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
         }
     }
     
-    var tableView: UITableView?
+    public var tableView: UITableView?
     
     // MARK: Actions
     
