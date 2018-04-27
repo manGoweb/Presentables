@@ -76,7 +76,7 @@ class TableDataManager: PresentableTableViewDataManager {
         let presentable = Presentable<MyTableViewCell>.create({ (cell) in
             cell.textLabel?.text = "First cell"
         })
-        section.presentables.append(presentable)
+        section.append(presentable)
         
         // Now add your section to the data source
         data.append(section)
@@ -137,14 +137,14 @@ class TableDataManager: PresentableTableViewDataManager {
         }).cellSelected {
             print("First cell has been selected")
         }
-        section.presentables.append(presentable)
+        section.append(presentable)
         
         // And add loads more different cells
         for i in 2...51 {
             let presentable = Presentable<TableViewCell2>.create({ (cell) in
                 cell.textLabel?.text = "Id: \((i))"
             })
-            section.presentables.append(presentable)
+            section.append(presentable)
         }
         
         // Now add your section to the data source
@@ -189,7 +189,7 @@ class ManagerTableViewController: PresentableTableViewController {
         let presentable = Presentable<TableViewCell2>.create({ (cell) in
             cell.textLabel?.text = "Custom cell"
         })
-        section.presentables.append(presentable)
+        section.append(presentable)
         
         data.append(section)
     }

@@ -25,7 +25,7 @@ class CollectionDataManager: PresentableCollectionViewDataManager {
             }).cellSelected {
                 print("Selected: \(i)")
             }
-            section.presentables.append(presentable)
+            section.append(presentable)
         }
         
         data.append(section)

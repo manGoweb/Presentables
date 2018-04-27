@@ -27,7 +27,7 @@ class ManagerTableViewController: PresentableTableViewController {
         }).cellSelected {
             print("First cell has been selected")
         }
-        section.presentables.append(presentable)
+        section.append(presentable)
         
         data.append(section)
         

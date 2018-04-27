@@ -51,7 +51,7 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data[section].presentables.count
+        return data[section].count
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -29,13 +29,13 @@ class TableDataManager: PresentableTableViewDataManager {
         }).cellSelected {
             print("First cell has been selected")
         }
-        section.presentables.append(presentable)
+        section.append(presentable)
         
         for i in 2...51 {
             let presentable = Presentable<TableViewCell2>.create({ (cell) in
                 cell.textLabel?.text = "Id: \((i))"
             })
-            section.presentables.append(presentable)
+            section.append(presentable)
         }
         
         data.append(section)

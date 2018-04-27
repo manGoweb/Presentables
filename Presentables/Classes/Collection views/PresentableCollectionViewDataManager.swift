@@ -53,7 +53,7 @@ open class PresentableCollectionViewDataManager: NSObject, PresentableManager, U
     }
     
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data[section].presentables.count
+        return data[section].count
     }
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

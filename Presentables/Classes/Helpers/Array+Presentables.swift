@@ -15,7 +15,7 @@ public extension Array where Element == PresentableType {
     public var section: PresentableSection {
         get {
             let section = PresentableSection()
-            section.presentables = self
+            section._presentables = self
             return section
         }
     }
@@ -29,7 +29,7 @@ public extension Array where Element: PresentableSectionMarker {
     
     func presentable(forIndexPath indexPath: IndexPath) -> PresentableType {
         let sections: PresentableSections = sectionsOrError()
-        return sections[indexPath.section].presentables[indexPath.row]
+        return sections[indexPath.section][indexPath.row]
     }
     
     func section(forIndexPath indexPath: IndexPath) -> PresentableSection {
