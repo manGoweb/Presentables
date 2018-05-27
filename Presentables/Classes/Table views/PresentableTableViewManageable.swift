@@ -17,7 +17,7 @@ public protocol PresentableTableViewManageable {
 
 extension PresentableTableViewManageable {
     
-    func bind() {
+    public func bind() {
         var manager: PresentableManager = presentableManager
         tableView.bind(withPresentableManager: &manager)
     }
