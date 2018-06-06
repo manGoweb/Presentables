@@ -65,7 +65,7 @@ open class PresentableCollectionViewDataManager: NSObject, PresentableManager, U
     }
     
     open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             guard let presentable: AnyPresentable = data.header(forSection: indexPath.section) else {
                 fatalError()
             }

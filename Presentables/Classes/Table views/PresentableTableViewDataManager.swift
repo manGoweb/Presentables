@@ -94,7 +94,7 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
     }
     
     open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return data[section].header == nil ? 0 : UITableViewAutomaticDimension
+        return data[section].header == nil ? 0 : UITableView.automaticDimension
     }
     
     open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -105,7 +105,7 @@ open class PresentableTableViewDataManager: NSObject, PresentableManager, UITabl
     }
     
     open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return data[section].footer == nil ? 0 : UITableViewAutomaticDimension
+        return data[section].footer == nil ? 0 : UITableView.automaticDimension
     }
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
