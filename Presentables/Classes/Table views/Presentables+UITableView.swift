@@ -28,12 +28,15 @@ extension UITableView: PresentableCollectionElement {
     
     public func bind(withPresentableManager manager: inout PresentableManager) {
         let m = manager
-        manager.bindableData.bind(listener: { (data) in
-            for section: PresentableSection in m.data {
-                self.register(section: section)
+        manager.bindableData.bind { [weak m] (data) in
+            if let data = m?.data {
+                for section: PresentableSection in data {
+                    self.register(section: section)
+                }
             }
+            
             self.safeReloadData()
-        })
+        }
         
         register(presentableSections: &manager.data)
         

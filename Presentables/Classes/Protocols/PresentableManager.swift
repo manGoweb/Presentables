@@ -9,7 +9,7 @@
 import Foundation
 
 
-public protocol PresentableManager {
+public protocol PresentableManager: class {
     
     var bindableData: Observable<PresentableSections> { get }
     var data: PresentableSections { get set }
