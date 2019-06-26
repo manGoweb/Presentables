@@ -21,8 +21,12 @@ fileprivate extension Array where Element == UITableViewCell.Type {
 extension UITableView: PresentableCollectionElement {
     
     func safeReloadData() {
-        DispatchQueue.main.async {
-            self.reloadData()
+        if Thread.isMainThread {
+            reloadData()
+        } else {
+            DispatchQueue.main.async {
+                self.reloadData()
+            }
         }
     }
     
