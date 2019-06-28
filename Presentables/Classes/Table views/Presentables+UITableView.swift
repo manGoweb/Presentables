@@ -24,13 +24,16 @@ extension UITableView: PresentableCollectionElement {
         if Thread.isMainThread {
             reloadData()
         } else {
-            DispatchQueue.main.async {
-                self.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.reloadData()
             }
         }
     }
     
     public func bind(withPresentableManager manager: inout PresentableManager) {
+        dataSource = manager as? UITableViewDataSource
+        delegate = manager as? UITableViewDelegate
+        
         let m = manager
         manager.bindableData.bind { [weak m] (data) in
             if let data = m?.data {
@@ -47,10 +50,7 @@ extension UITableView: PresentableCollectionElement {
         manager.needsReloadData = {
             self.safeReloadData()
         }
-        
-        dataSource = manager as? UITableViewDataSource
-        delegate = manager as? UITableViewDelegate
-        
+
         if let manager = manager as? PresentableTableViewDataManager {
             manager.tableView = self
         }
