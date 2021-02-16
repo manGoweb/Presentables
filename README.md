@@ -15,10 +15,6 @@ So what is Presentables really? It is a really small library that should help yo
 
 Get help using and installing this product on our [Slack](http://bit.ly/2B0dEyt), channel <b>#help-presentables</b>
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
 ## Installation
 
 #### Swift Package Manager (SPM)
