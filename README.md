@@ -1,10 +1,9 @@
 # Presentables
 
 [![Slack](https://img.shields.io/badge/join-slack-745EAF.svg?style=flat)](http://bit.ly/2B0dEyt)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Version](https://img.shields.io/cocoapods/v/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
-[![License](https://img.shields.io/cocoapods/l/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
-[![Platform](https://img.shields.io/cocoapods/p/Presentables.svg?style=flat)](http://cocoapods.org/pods/Presentables)
+[![SPM compatible](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/documentation/xcode/creating_a_standalone_swift_package_with_xcode)
+[![License](https://img.shields.io/badge/license-MIT-745EAF.svg?style=flat)](https://github.com/manGoweb/Presentables/blob/master/LICENSE)
+[![Platform](https://img.shields.io/badge/platform-iOS-745EAF.svg)](https://github.com/manGoweb/Presentables)
 
 ## 
 
@@ -22,22 +21,15 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-#### Cocoapods
+#### Swift Package Manager (SPM)
 
-Presentables is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "Presentables"
+```swift
+dependencies: [    
+    // Dependencies declare other packages that this package depends on.
+    .package(url: "https://github.com/manGoweb/Presentables.git", from: "1.0.0")
+]
 ```
 
-#### Carthage
-
-Presentables is also available through [Carthage](https://github.com/Carthage/Carthage). To install
-it, simply add the following line to your Cartfile:
-```ruby
-github "manGoweb/Presentables"
-```
 ## Usage
 
 Create your cell like you would usually do
